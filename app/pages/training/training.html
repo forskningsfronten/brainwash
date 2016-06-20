@@ -1,0 +1,13 @@
+<ion-navbar *navbar>
+</ion-navbar>
+
+  <ion-content>
+  <ion-card (click)="tap()" [hidden]="!showCard">
+    <img src="{{current.image}}"/>
+    <ion-card-content [ngClass]="{'tap-result-correct' : showResult && correctResponse, 'tap-result-wrong' : showResult && !correctResponse}">
+      <ion-card-title>
+        {{current.topic}}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
