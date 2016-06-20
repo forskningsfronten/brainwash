@@ -2,7 +2,7 @@
 </ion-navbar>
 
   <ion-content>
-  <ion-card (click)="tap()" [hidden]="!showCard">
+  <ion-card (click)="tap()" *ngIf="showCard">
     <img src="{{current.image}}"/>
     <ion-card-content [ngClass]="{'tap-result-correct' : showResult && correctResponse, 'tap-result-wrong' : showResult && !correctResponse}">
       <ion-card-title>
