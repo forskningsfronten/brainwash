@@ -1,9 +1,12 @@
+/// <reference path="../../../typings/modules/lodash/index.d.ts" />
+
 import {Component} from '@angular/core';
 import {NavController, NavParams, Animation, Alert} from 'ionic-angular';
 import {StartPage} from '../start-page/start-page';
+import * as _ from 'lodash';
 
 interface TrainingExample {
-    topic: string;
+    word: string;
     image: string;
     counterStereotype: boolean;
 }
@@ -22,19 +25,51 @@ export class TrainingPage {
     correctResponse: boolean;
     timeout;
 
+    randIdx(length:number) {
+      return Math.floor(Math.random() * length);
+    }
+
+    createTestData() {
+      let sciWords = ["Science", "Chemistry", "Math", "Geometry", "Engineering"];
+      let artWords = ["Dance", "Theater", "Drama", "History", "Music"];
+      let maleFaces = ['img/2666384408_1.jpg', 'img/2652699508_1.jpg'];
+      let femaleFaces = ['img/2658969370_1.jpg', 'img/2651953293_1.jpg'];
+
+      let testSet = Array(18).fill(0).map((_, idx) => (
+        {
+          word: sciWords[this.randIdx(sciWords.length)],
+          image: femaleFaces[this.randIdx(femaleFaces.length)],
+          counterStereotype: true
+        }
+      )).concat(new Array(6).fill(0).map((_, idx) => {
+        return {
+          word: artWords[this.randIdx(artWords.length)],
+          image: femaleFaces[this.randIdx(femaleFaces.length)],
+          counterStereotype: false
+        };
+      })).concat(new Array(6).fill(0).map((_, idx) => {
+        return {
+          word: sciWords[this.randIdx(sciWords.length)],
+          image: maleFaces[this.randIdx(maleFaces.length)],
+          counterStereotype: false
+        };
+      })).concat(new Array(6).fill(0).map((_, idx) => {
+        return {
+          word: artWords[this.randIdx(artWords.length)],
+          image: maleFaces[this.randIdx(maleFaces.length)],
+          counterStereotype: false
+        };
+      }));
+
+      return _.shuffle(testSet);
+    }
+
     constructor(private nav: NavController, navParams: NavParams) {
         console.log("CTOR");
 
         this.showCard = true;
-        let sciWords = ["Science", "Chemistry", "Math", "Geometry", "Engineering"];
-        let artWords = ["Dance", "Theater", "Drama", "History", "Music"];
-        this.examples = [
-            { topic: 'Matematiker', image: 'img/2658969370_1.jpg', counterStereotype: true },
-            { topic: 'Fysiker', image: 'img/2651953293_1.jpg', counterStereotype: true },
-            { topic: 'Skådespelare', image: 'img/2666384408_1.jpg', counterStereotype: false },
-            { topic: 'Programmerare', image: 'img/2652699508_1.jpg', counterStereotype: false }
-        ];
 
+        this.examples = this.createTestData();
         this.currentIndex = -1;
         this.nextExample(false);
     }
@@ -125,7 +160,7 @@ export class TrainingPage {
     }
 
     ionViewWillLeave() {
-        let alert = Alert.create({
+      let alert = Alert.create({
             title: 'Training canceled',
             subTitle: 'Statistics recorded during this session has been discarded.',
             buttons: ['OK']
