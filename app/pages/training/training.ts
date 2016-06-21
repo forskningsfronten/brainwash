@@ -15,6 +15,7 @@ interface TrainingExample {
 export class TrainingPage {
     examples: TrainingExample[];
     current: TrainingExample;
+    time: number;
     currentIndex: number;
     showCard: boolean;
     showResult: boolean;
@@ -75,6 +76,7 @@ export class TrainingPage {
             return;
         }
 
+        this.time = Date.now();
         this.currentIndex += 1;
         this.current = this.examples[this.currentIndex];
         this.timeout = this.makeCancelable(this.getTimeOut(2000));
@@ -91,6 +93,9 @@ export class TrainingPage {
             console.log("tap while showing result doesn't count");
             return;
         }
+
+        let delay = Date.now() - this.time;
+        console.log('Tap after: ' + delay + ' ms');
 
         this.timeout.cancel();
 
