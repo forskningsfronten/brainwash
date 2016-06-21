@@ -8,7 +8,6 @@ import {TrainingPage} from '../training/training';
 
 export class StartPage {
   constructor(private nav: NavController, navParams: NavParams) {
-    this.startTraining(); // FOR DEVELOPMENT ONLY
   }
 
   startTraining() {

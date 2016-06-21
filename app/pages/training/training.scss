@@ -4,6 +4,10 @@
     text-align: center;
   }
 
+  scroll-content {
+    overflow-y: hidden;
+  }
+
   $correct-color: #69BB7B;
   $wrong-color:   #f53d3d;
 
