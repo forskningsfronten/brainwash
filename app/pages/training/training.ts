@@ -10,6 +10,11 @@ interface TrainingExample {
     image: string;
     counterStereotype: boolean;
 }
+
+interface ITrainingExampleResult {
+  example: TrainingExample;
+  tapTime: number; // ms from stimuli exposure to tap (or null if no tap)
+}
 // Stimuli -> Timeout -> (Result Feedback) -> Blank -> Next Stimuli
 //         -> Tap -> Result Feedback -> Blank -> Next Stimuli
 @Component({
@@ -17,6 +22,7 @@ interface TrainingExample {
 })
 export class TrainingPage {
     examples: TrainingExample[];
+    result: ITrainingExampleResult[];
     current: TrainingExample;
     time: number;
     currentIndex: number;
@@ -71,6 +77,7 @@ export class TrainingPage {
         this.showCard = true;
 
         this.examples = this.createTestData();
+        this.result = new Array<ITrainingExampleResult>();
         this.currentIndex = -1;
         this.nextExample(false);
     }
@@ -89,6 +96,10 @@ export class TrainingPage {
 
     tapTimeOut() {
         console.log("timedOut()");
+        this.result.push({
+          example: this.current,
+          tapTime: null
+        });
         this.nextExample();
         // TODO should we show response on timeout?
         // Probably not...
@@ -139,6 +150,11 @@ export class TrainingPage {
 
         let delay = Date.now() - this.time;
         console.log('Tap after: ' + delay + ' ms');
+
+        this.result.push({
+          example: this.current,
+          tapTime: delay
+        });
 
         this.timeout.cancel();
 
