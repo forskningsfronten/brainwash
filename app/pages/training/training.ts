@@ -24,6 +24,7 @@ export class TrainingPage {
     showResult: boolean;
     correctResponse: boolean;
     timeout;
+    leftPage: boolean;
 
     randIdx(length:number) {
       return Math.floor(Math.random() * length);
@@ -66,7 +67,7 @@ export class TrainingPage {
 
     constructor(private nav: NavController, navParams: NavParams) {
         console.log("CTOR");
-
+        this.leftPage = false;
         this.showCard = true;
 
         this.examples = this.createTestData();
@@ -76,6 +77,8 @@ export class TrainingPage {
 
     showBlank() {
         console.log("showing blank");
+        if (this.leftPage)
+          return;
         this.showCard = false;
         this.getTimeOut(1000).then(() => {
             console.log("showing blank - on to next");
@@ -99,6 +102,8 @@ export class TrainingPage {
 
     nextExample(startWithBlank = true) {
         console.log("nextExample()");
+        if (this.leftPage)
+          return;
 
         if (this.currentIndex == this.examples.length - 1) {
             // No more examples, training finished
@@ -147,6 +152,9 @@ export class TrainingPage {
     }
 
     showResultFeedback(correctResponse: boolean) {
+        if (this.leftPage)
+          return;
+
         this.correctResponse = correctResponse;
         this.showResult = true;
         this.getTimeOut(500).then(() => {
@@ -160,6 +168,7 @@ export class TrainingPage {
     }
 
     ionViewWillLeave() {
+      this.leftPage = true;
       let alert = Alert.create({
             title: 'Training canceled',
             subTitle: 'Statistics recorded during this session has been discarded.',
