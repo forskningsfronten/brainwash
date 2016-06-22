@@ -33,8 +33,8 @@ export class TrainingPage {
     createTestData() {
       let sciWords = ["Science", "Chemistry", "Math", "Geometry", "Engineering"];
       let artWords = ["Dance", "Theater", "Drama", "History", "Music"];
-      let maleFaces = ['img/2666384408_1.jpg', 'img/2652699508_1.jpg'];
-      let femaleFaces = ['img/2658969370_1.jpg', 'img/2651953293_1.jpg'];
+      let maleFaces = ['img/2666384408_1.jpg', 'img/2652699508_1.jpg', 'img/10697993_1.jpg', 'img/20315024_1.jpg', 'img/100040721_2.jpg'];
+      let femaleFaces = ['img/2658969370_1.jpg', 'img/2651953293_1.jpg', 'img/1629243_1.jpg', 'img/30844800_1.jpg', 'img/114530171_1.jpg'];
 
       let testSet = Array(18).fill(0).map((_, idx) => (
         {
