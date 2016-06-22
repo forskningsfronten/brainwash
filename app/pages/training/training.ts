@@ -89,15 +89,18 @@ export class TrainingPage {
 
     tapTimeOut() {
         console.log("timedOut()");
-        if (this.current.counterStereotype) {
-            // Wrong response - should have tapped - show error
-            console.log("Showing result (timeout) feedback");
-            this.showResultFeedback(false);
-        }
-        else {
-            // Correct response - no tap - move on
-            this.nextExample();
-        }
+        this.nextExample();
+        // TODO should we show response on timeout?
+        // Probably not...
+        // if (this.current.counterStereotype) {
+        //     // Wrong response - should have tapped - show error
+        //     console.log("Showing result (timeout) feedback");
+        //     this.showResultFeedback(false);
+        // }
+        // else {
+        //     // Correct response - no tap - move on
+        //     this.nextExample();
+        // }
     }
 
     nextExample(startWithBlank = true) {
