@@ -186,14 +186,31 @@ export class TrainingPage {
         return new Promise(r => setTimeout(r, ms));
     }
 
+
+    confirmedExit: boolean = false;
+
     ionViewWillLeave() {
-      this.leftPage = true;
-      let alert = Alert.create({
-            title: 'Training canceled',
-            subTitle: 'Statistics recorded during this session has been discarded.',
-            buttons: ['OK']
+      if(!this.confirmedExit) {
+        let confirm = Alert.create({
+          title: 'Training canceled',
+          message: 'Now leaving',
+          buttons: [{
+            text: 'Ok',
+            handler: () => {
+              this.exitPage();
+            }
+          }]
         });
-        //this.nav.present(alert);
+        this.nav.present(confirm);
+      }
+    }
+
+    exitPage(){
+      this.leftPage = true;
+      this.confirmedExit = true;
+      this.nav.remove().then(() => {
+        this.nav.pop();
+      });
     }
 
     makeCancelable(promise) {
