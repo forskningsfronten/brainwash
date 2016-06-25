@@ -1,0 +1,26 @@
+<ion-content padding class="i-a-t-page" (swipeleft)="swipeLeftEvent($event)" (swiperight)="swipeRightEvent($event)">
+
+  <div text-left class="stimuli-category stimuli-category-left">
+    {{firstLeftCategory}}<br>
+    <div class="stimuli-category-separator">eller</div>
+    {{secondLeftCategory}}
+  </div>
+
+  <div text-right class="stimuli-category stimuli-category-right">
+    {{firstRightCategory}}<br>
+    <div class="stimuli-category-separator">eller</div>
+    {{secondRightCategory}}
+  </div>
+
+  <div class="stimuli">
+    {{stimuli}}
+  </div>
+
+  <button fab fab-left fab-bottom dark outline (click)="leftPress()">
+    <ion-icon name="arrow-round-back"></ion-icon>
+  </button>
+  <button fab fab-right fab-bottom dark outline (click)="rightPress()">
+    <ion-icon name="arrow-round-forward"></ion-icon>
+  </button>
+
+</ion-content>

@@ -4,7 +4,6 @@
   <audio autoplay="autoplay" *ngIf="showResult && correctResponse">
     <source src="sound/Sound_2.mp3" type="audio/mp3">
   </audio>
-  <br />
   <ion-card (click)="tap()" *ngIf="showCard">
     <img src="{{current.image}}"/>
     <ion-card-content [ngClass]="{'tap-result-correct' : showResult && correctResponse, 'tap-result-wrong' : showResult && !correctResponse}">
