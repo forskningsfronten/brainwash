@@ -3,6 +3,8 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams, Animation, Alert} from 'ionic-angular';
 import {StartPage} from '../start-page/start-page';
+import {CancelablePromise, timeOutPromise} from '../core/promise-ext';
+import {NavBackAlert} from '../core/ionic-nav-ext';
 import * as _ from 'lodash';
 
 interface TrainingExample {
@@ -30,7 +32,6 @@ export class TrainingPage {
     showResult: boolean;
     correctResponse: boolean;
     timeout;
-    leftPage: boolean;
 
     randIdx(length:number) {
       return Math.floor(Math.random() * length);
@@ -71,9 +72,12 @@ export class TrainingPage {
       return _.shuffle(testSet);
     }
 
+    private navBackAlert_: NavBackAlert;
+
     constructor(private nav: NavController, navParams: NavParams) {
         console.log("CTOR");
-        this.leftPage = false;
+        this.navBackAlert_ = new NavBackAlert(nav, 'Training Canceled', 'Now exiting');
+
         this.showCard = true;
 
         this.examples = this.createTestData();
@@ -84,10 +88,10 @@ export class TrainingPage {
 
     showBlank() {
         console.log("showing blank");
-        if (this.leftPage)
+        if (this.navBackAlert_.leavingPage)
           return;
         this.showCard = false;
-        this.getTimeOut(1000).then(() => {
+        timeOutPromise(1000).then(() => {
             console.log("showing blank - on to next");
             this.showCard = true;
             this.nextExample(false);
@@ -116,7 +120,7 @@ export class TrainingPage {
 
     nextExample(startWithBlank = true) {
         console.log("nextExample()");
-        if (this.leftPage)
+        if (this.navBackAlert_.leavingPage)
           return;
 
         if (this.currentIndex == this.examples.length - 1) {
@@ -133,9 +137,8 @@ export class TrainingPage {
         this.time = Date.now();
         this.currentIndex += 1;
         this.current = this.examples[this.currentIndex];
-        this.timeout = this.makeCancelable(this.getTimeOut(2000));
-        this.timeout
-            .promise
+        this.timeout = new CancelablePromise(timeOutPromise(2000));
+        this.timeout.promise
             .then(() => this.tapTimeOut())
             .catch((reason) => console.log('timeout canceled', reason.isCanceled));
     }
@@ -171,66 +174,18 @@ export class TrainingPage {
     }
 
     showResultFeedback(correctResponse: boolean) {
-        if (this.leftPage)
+        if (this.navBackAlert_.leavingPage)
           return;
 
         this.correctResponse = correctResponse;
         this.showResult = true;
-        this.getTimeOut(500).then(() => {
+        timeOutPromise(500).then(() => {
             this.showResult = false;
             this.nextExample();
         });
     }
 
-    getTimeOut(ms: number) {
-        return new Promise(r => setTimeout(r, ms));
-    }
-
-
-    confirmedExit: boolean = false;
-
     ionViewWillLeave() {
-      if(!this.confirmedExit) {
-        let confirm = Alert.create({
-          title: 'Training canceled',
-          message: 'Now leaving',
-          buttons: [{
-            text: 'Ok',
-            handler: () => {
-              this.exitPage();
-            }
-          }]
-        });
-        this.nav.present(confirm);
-      }
+      this.navBackAlert_.showAlert();
     }
-
-    exitPage(){
-      this.leftPage = true;
-      this.confirmedExit = true;
-      this.nav.remove().then(() => {
-        this.nav.pop();
-      });
-    }
-
-    makeCancelable(promise) {
-        let hasCanceled_ = false;
-
-        const wrappedPromise = new Promise((resolve, reject) => {
-            promise.then((val) =>
-                hasCanceled_ ? reject({ isCanceled: true }) : resolve(val)
-            );
-            promise.catch((error) =>
-                hasCanceled_ ? reject({ isCanceled: true }) : reject(error)
-            );
-        });
-
-        return {
-            promise: wrappedPromise,
-            cancel() {
-                hasCanceled_ = true;
-            },
-        };
-    };
-
 }
