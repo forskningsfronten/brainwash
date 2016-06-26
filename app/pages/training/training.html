@@ -1,10 +1,11 @@
 <ion-content>
-  <audio autoplay="autoplay" *ngIf="showResult && correctResponse">
+  <audio autoplay="autoplay" *ngIf="playSound && showResult && correctResponse">
     <source src="sound/Sound_2.mp3" type="audio/mp3">
   </audio>
-  <ion-card (click)="tap()" *ngIf="showCard">
-    <img src="{{current.image}}"/>
-    <ion-card-content [ngClass]="{'tap-result-correct' : showResult && correctResponse, 'tap-result-wrong' : showResult && !correctResponse}">
+  <div style="height: 10%;"></div>
+  <ion-card [ngClass]="{'tap-result-correct' : showResult && correctResponse, 'tap-result-wrong' : showResult && !correctResponse}" (click)="tap()" *ngIf="showCard">
+    <img padding style="padding-bottom: 0px;" src="{{current.image}}"/>
+    <ion-card-content >
       <ion-card-title>
         {{current.word}}
       </ion-card-title>

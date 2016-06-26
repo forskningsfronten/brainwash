@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {TrainingPage} from '../training/training';
 import {IatPage} from '../iat/iat';
+import {SettingsPage} from '../settings/settings';
 
 @Component({
   templateUrl: 'build/pages/start-page/start-page.html'
@@ -9,7 +10,7 @@ import {IatPage} from '../iat/iat';
 
 export class StartPage {
   constructor(private nav: NavController, navParams: NavParams) {
-//    this.startIAT();
+    //this.openSettings();
   }
 
   startTraining() {
@@ -18,5 +19,9 @@ export class StartPage {
 
   startIAT() {
     this.nav.push(IatPage);
+  }
+
+  openSettings() {
+    this.nav.push(SettingsPage);
   }
 }

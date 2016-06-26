@@ -3,6 +3,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams, Animation, Alert} from 'ionic-angular';
 import {StartPage} from '../start-page/start-page';
+import {SettingsStorage} from '../settings/settings-storage';
 import {CancelablePromise, timeOutPromise} from '../core/promise-ext';
 import {NavBackAlert} from '../core/ionic-nav-ext';
 import * as _ from 'lodash';
@@ -72,11 +73,17 @@ export class TrainingPage {
       return _.shuffle(testSet);
     }
 
+    playSound: boolean;
+    private settingsStorage = new SettingsStorage();
+
     private navBackAlert_: NavBackAlert;
 
-    constructor(private nav: NavController, navParams: NavParams) {
+    constructor(private nav: NavController, private navParams: NavParams) {
         console.log("CTOR");
         this.navBackAlert_ = new NavBackAlert(nav, 'Training Canceled', 'Now exiting');
+
+        this.settingsStorage.getValue(this.settingsStorage.playTrainingSoundsKey)
+        .then(val => { console.log('SOUND ' + val); this.playSound = val; });
 
         this.showCard = true;
 
