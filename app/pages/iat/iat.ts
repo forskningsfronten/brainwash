@@ -29,6 +29,7 @@ interface ConceptSet {
 interface Stimuli {
   ofConcept: string;
   word: string;
+  time: number;
 }
 
 @Component({
@@ -46,10 +47,11 @@ export class IatPage {
   testBlocks: TestBlock[];
   currentBlock = -1;
 
-  private getSamples(n:number, values:string[], concept: string) {
-    return Array(n).fill(0).map((_, idx) => ({
-        word: values[idx % values.length],
-        ofConcept: concept
+  private getStimuli(n:number, values:string[], concept: string) {
+    return Array(n).fill(0).map(_ => ({
+        word: values[Math.floor(Math.random() * values.length)],
+        ofConcept: concept,
+        time: null
       }));
   }
 
@@ -82,64 +84,64 @@ export class IatPage {
       leftConcepts: { first: concepts.concept1A.title, second: null },
       rightConcepts: { first: concepts.concept1B.title, second: null },
       stimuli: _.shuffle(
-        this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
-        this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)))
+        this.getStimuli(2, concepts.concept1A.words, concepts.concept1A.title).concat(
+        this.getStimuli(2, concepts.concept1B.words, concepts.concept1B.title)))
     };
     // n = 20 : Practice
     let block2 = {
       leftConcepts: { first: concepts.concept2A.title, second: null },
       rightConcepts: { first: concepts.concept2B.title, second: null },
       stimuli: _.shuffle(
-        this.getSamples(2, concepts.concept2A.words, concepts.concept2A.title).concat(
-        this.getSamples(2, concepts.concept2B.words, concepts.concept2B.title)))
+        this.getStimuli(2, concepts.concept2A.words, concepts.concept2A.title).concat(
+        this.getStimuli(2, concepts.concept2B.words, concepts.concept2B.title)))
     };
     // n = 20 : Practice
     let block3 = {
       leftConcepts: { first: concepts.concept1A.title, second: concepts.concept2A.title },
       rightConcepts: { first: concepts.concept1B.title, second: concepts.concept2B.title },
       stimuli: _.shuffle(
-        this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
-        this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
-        this.getSamples(2, concepts.concept2A.words, concepts.concept2A.title)).concat(
-        this.getSamples(2, concepts.concept2B.words, concepts.concept2B.title)))
+        this.getStimuli(2, concepts.concept1A.words, concepts.concept1A.title).concat(
+        this.getStimuli(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
+        this.getStimuli(2, concepts.concept2A.words, concepts.concept2A.title)).concat(
+        this.getStimuli(2, concepts.concept2B.words, concepts.concept2B.title)))
     };
     // n = 40 : Test
     let block4 = {
       leftConcepts: { first: concepts.concept1A.title, second: concepts.concept2A.title },
       rightConcepts: { first: concepts.concept1B.title, second: concepts.concept2B.title },
       stimuli: _.shuffle(
-        this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
-        this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
-        this.getSamples(2, concepts.concept2A.words, concepts.concept2A.title)).concat(
-        this.getSamples(2, concepts.concept2B.words, concepts.concept2B.title)))
+        this.getStimuli(2, concepts.concept1A.words, concepts.concept1A.title).concat(
+        this.getStimuli(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
+        this.getStimuli(2, concepts.concept2A.words, concepts.concept2A.title)).concat(
+        this.getStimuli(2, concepts.concept2B.words, concepts.concept2B.title)))
     };
     // n = 20 : Practice
     let block5 = {
       leftConcepts: { first: concepts.concept1B.title, second: null },
       rightConcepts: { first: concepts.concept1A.title, second: null },
       stimuli: _.shuffle(
-        this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
-        this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)))
+        this.getStimuli(2, concepts.concept1A.words, concepts.concept1A.title).concat(
+        this.getStimuli(2, concepts.concept1B.words, concepts.concept1B.title)))
     };
     // n = 20 : Practice
     let block6 = {
       leftConcepts: { first: concepts.concept1B.title, second: concepts.concept2A.title },
       rightConcepts: { first: concepts.concept1A.title, second: concepts.concept2B.title },
       stimuli: _.shuffle(
-        this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
-        this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
-        this.getSamples(2, concepts.concept2A.words, concepts.concept2A.title)).concat(
-        this.getSamples(2, concepts.concept2B.words, concepts.concept2B.title)))
+        this.getStimuli(2, concepts.concept1A.words, concepts.concept1A.title).concat(
+        this.getStimuli(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
+        this.getStimuli(2, concepts.concept2A.words, concepts.concept2A.title)).concat(
+        this.getStimuli(2, concepts.concept2B.words, concepts.concept2B.title)))
     };
     // n = 40 : Test
     let block7 = {
       leftConcepts: { first: concepts.concept1B.title, second: concepts.concept2A.title },
       rightConcepts: { first: concepts.concept1A.title, second: concepts.concept2B.title },
       stimuli: _.shuffle(
-        this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
-        this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
-        this.getSamples(2, concepts.concept2A.words, concepts.concept2A.title)).concat(
-        this.getSamples(2, concepts.concept2B.words, concepts.concept2B.title)))
+        this.getStimuli(2, concepts.concept1A.words, concepts.concept1A.title).concat(
+        this.getStimuli(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
+        this.getStimuli(2, concepts.concept2A.words, concepts.concept2A.title)).concat(
+        this.getStimuli(2, concepts.concept2B.words, concepts.concept2B.title)))
     };
 
 
@@ -214,8 +216,8 @@ export class IatPage {
 
     // Correct response - tap on counter stereotype - show positive response
 
-    let delay = Date.now() - this.time;
-    console.log('Correct response after: ' + delay + ' ms');
+    this.currentStimuli.time = Date.now() - this.time;
+    console.log('Correct response after: ' + this.currentStimuli.time + ' ms');
 
     // this.result.push({
     //   example: this.current,
