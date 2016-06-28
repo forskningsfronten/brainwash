@@ -39,6 +39,21 @@
       text-align: center;
   }
 
+  .block-instruction {
+      height: 100%;
+      // font-size: 2.8rem;
+      // font-weight: bold;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      align-items: center;
+      // justify-content: center;
+      width: auto;
+      // text-align: center;
+  }
+
   .error {
     font-size: 2.8rem;
     font-weight: bold;

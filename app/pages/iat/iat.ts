@@ -82,7 +82,6 @@ export class IatPage {
 
     this.createTestData();
     this.currentIndex = -1;
-    this.nextExample();
   }
 
   nextExample() {
@@ -104,6 +103,7 @@ export class IatPage {
       // End of block, transition to next block
       this.currentBlock += 1;
       this.currentIndex = -1;
+      return;
     }
     console.log('C CB ' + this.currentBlock );
 
@@ -124,6 +124,12 @@ export class IatPage {
 
   private press(pressCategory: string) {
     console.log('Press ' + pressCategory);
+
+    if (this.currentIndex === -1) {
+      // Instruction screen - kick off
+      this.nextExample();
+      return;
+    }
 
     console.log('this.currentStimuli.category: ' + this.currentStimuli.category);
 

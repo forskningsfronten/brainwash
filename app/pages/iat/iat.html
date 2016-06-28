@@ -16,8 +16,16 @@
     </div>
   </div>
 
-  <div class="stimuli">
+  <div *ngIf="currentIndex !== -1" class="stimuli">
     {{currentStimuli.word}}
+  </div>
+
+  <div *ngIf="currentIndex === -1" class="block-instruction">
+    <ion-card padding>
+        <h2>Del {{currentBlock + 1}} av {{testBlocks.length}}</h2>
+        <hr>
+        <p>Tryck på någon av pilarna för att starta.</p>
+    </ion-card>
   </div>
 
   <button fab fab-bottom fab-center clear *ngIf='showError'>
