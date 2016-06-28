@@ -5,11 +5,39 @@
   Ionic pages and navigation.
 -->
 <ion-navbar *navbar>
-  <ion-title>training-intro</ion-title>
+  <ion-title>Training Prep</ion-title>
 </ion-navbar>
 
-<ion-content padding class="training-intro">
-  
-  <button primary (click)="startTraining()">Start Training</button>
+<ion-content class="training-intro">
+
+  <ion-slides #introSlider pager>
+    <ion-slide>
+      <ion-toolbar style="position:fixed; top:0px;">
+        <ion-buttons end>
+          <button (click)="skipIntro()">Skip <ion-icon name="arrow-forward"></ion-icon></button>
+        </ion-buttons>
+      </ion-toolbar>
+      <h2 class="slide-title">Training...</h2>
+      <p>Bla bla, this is how it works.</p>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-toolbar style="position:fixed; top:0px;">
+        <ion-buttons end>
+          <button (click)="skipIntro()">Skip <ion-icon name="arrow-forward"></ion-icon></button>
+        </ion-buttons>
+      </ion-toolbar>
+      <h2 class="slide-title">Training 2...</h2>
+      <p>Bla bla, some more.</p>
+
+    </ion-slide>
+      <ion-slide>
+        <ion-toolbar style="position:fixed; top:0px;">
+          <ion-label>Skip intro</ion-label><ion-checkbox></ion-checkbox>
+        </ion-toolbar>
+        <h2>Ready?</h2>
+        <button primary (click)="startTraining()">Start Training</button>
+      </ion-slide>
+    </ion-slides>
 
 </ion-content>

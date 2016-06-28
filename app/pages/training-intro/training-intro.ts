@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, ViewController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, ViewController, Slides } from 'ionic-angular';
 import {TrainingPage} from '../training/training';
 
 /*
@@ -12,8 +12,9 @@ import {TrainingPage} from '../training/training';
   templateUrl: 'build/pages/training-intro/training-intro.html',
 })
 export class TrainingIntroPage {
-  constructor(private nav: NavController, private viewCtrl: ViewController) {}
+  @ViewChild('introSlider') slider: Slides;
 
+  constructor(private nav: NavController, private viewCtrl: ViewController) {}
 
   startTraining() {
     this.nav.push(TrainingPage)
@@ -22,5 +23,9 @@ export class TrainingIntroPage {
         const index = this.nav.indexOf(this.viewCtrl);
         this.nav.remove(index);
       });
+  }
+
+  skipIntro() {
+    this.slider.slideTo(this.slider.length() - 1, 500);
   }
 }
