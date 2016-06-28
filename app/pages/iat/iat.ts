@@ -189,42 +189,32 @@ export class IatPage {
   showError: boolean = false;
 
   leftPress() {
-    this.press('LEFT');
-  }
-
-  rightPress() {
-    this.press('RIGHT');
-  }
-
-  private press(pressedButton: string) {
-    console.log('Press ' + pressedButton);
-
     if (this.currentIndex === -1) {
-      // Instruction screen - kick off
+      // Instruction screen
       this.nextExample();
       return;
     }
 
-    console.log('this.currentStimuli.ofConcept: ' + this.currentStimuli.ofConcept);
+    this.press(this.currentStimuli.ofConcept === this.testBlocks[this.currentBlock].leftConcepts.first
+      || this.currentStimuli.ofConcept === this.testBlocks[this.currentBlock].leftConcepts.second);
+  }
 
-    if ((pressedButton === 'LEFT'
-    && (this.currentStimuli.ofConcept === this.testBlocks[this.currentBlock].leftConcepts.first
-      || this.currentStimuli.ofConcept === this.testBlocks[this.currentBlock].leftConcepts.second))
-      || (pressedButton === 'RIGHT'
-      && (this.currentStimuli.ofConcept === this.testBlocks[this.currentBlock].rightConcepts.first
-        || this.currentStimuli.ofConcept === this.testBlocks[this.currentBlock].rightConcepts.second))) {
+  rightPress() {
+    if (this.currentIndex === -1) {
+      // Instruction screen
+      this.nextExample();
+      return;
+    }
 
-    // Correct response - tap on counter stereotype - show positive response
+    this.press(this.currentStimuli.ofConcept === this.testBlocks[this.currentBlock].rightConcepts.first
+      || this.currentStimuli.ofConcept === this.testBlocks[this.currentBlock].rightConcepts.second);
+  }
 
-    this.currentStimuli.time = Date.now() - this.time;
-    console.log('Correct response after: ' + this.currentStimuli.time + ' ms');
-
-    // this.result.push({
-    //   example: this.current,
-    //   tapTime: delay
-    // });
-
-    this.nextExample();
+  private press(correctResponse: boolean) {
+    if (correctResponse) {
+      this.currentStimuli.time = Date.now() - this.time;
+      console.log('Correct response after: ' + this.currentStimuli.time + ' ms');
+      this.nextExample();
     }
     else {
       // Wrong response
