@@ -7,8 +7,8 @@ import {NavBackAlert} from '../core/ionic-nav-ext';
 import * as _ from 'lodash';
 
 interface TestBlock {
-  leftCategories: string[];
-  rightCategories: string[];
+  leftCategories: { first: string, second: string };
+  rightCategories: { first: string, second: string };
   stimuli: Stimuli[];
 }
 
@@ -49,8 +49,8 @@ export class IatPage {
     .concat(this.getSamples(5, man, 'Man')));
 
     this.testBlock = {
-      leftCategories: ['Kvinna', 'Vetenskap'],
-      rightCategories: ['Man', 'Humanism'],
+      leftCategories: { first: 'Kvinna', second: 'Vetenskap' },
+      rightCategories: { first: 'Man', second: 'Humanism' },
       stimuli: stimuli
     };
   }
@@ -99,11 +99,11 @@ export class IatPage {
     console.log('this.currentStimuli.category: ' + this.currentStimuli.category);
 
     if ((pressCategory === 'LEFT'
-    && (this.currentStimuli.category === this.testBlock.leftCategories[0]
-      || this.currentStimuli.category === this.testBlock.leftCategories[1]))
+    && (this.currentStimuli.category === this.testBlock.leftCategories.first
+      || this.currentStimuli.category === this.testBlock.leftCategories.second))
       || (pressCategory === 'RIGHT'
-      && (this.currentStimuli.category === this.testBlock.rightCategories[0]
-        || this.currentStimuli.category === this.testBlock.rightCategories[1]))) {
+      && (this.currentStimuli.category === this.testBlock.rightCategories.first
+        || this.currentStimuli.category === this.testBlock.rightCategories.second))) {
 
     // Correct response - tap on counter stereotype - show positive response
 
