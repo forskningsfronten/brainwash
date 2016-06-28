@@ -29,8 +29,8 @@ export class IatPage {
   currentIndex: number;
 
   currentStimuli: Stimuli;
-  testBlock: TestBlock;
-
+  testBlocks: TestBlock[];
+  currentBlock = -1;
 
   private getSamples(n:number, values:string[], category: string) {
     return Array(n).fill(0).map((_, idx) => ({
@@ -45,14 +45,34 @@ export class IatPage {
     let humanism = ['Filosofi', 'Estetik', 'Konstvetenskap', 'Litteraturvetenskap', 'Språkvetenskap', 'Musikvetenskap', 'Historia'];
     let science = ['Biologi', 'Fysik', 'Kemi', 'Matematik', 'Geologi', 'Astronomi', 'Ingenjörsvetenskap'];
 
-    let stimuli = _.shuffle(this.getSamples(5, woman, 'Kvinna')
-    .concat(this.getSamples(5, man, 'Man')));
+    let stimuli = _.shuffle(this.getSamples(5, woman, 'Kvinna').concat(this.getSamples(5, man, 'Man')));
 
-    this.testBlock = {
+    let block1 = {
+      leftCategories: { first: 'Kvinna', second: null },
+      rightCategories: { first: 'Man', second: null },
+      stimuli: _.shuffle(
+        this.getSamples(2, woman, 'Kvinna').concat(
+        this.getSamples(2, man, 'Man')))
+    };
+    let block2 = {
+      leftCategories: { first: 'Vetenskap', second: null },
+      rightCategories: { first: 'Humanism', second: null },
+      stimuli: _.shuffle(
+        this.getSamples(2, science, 'Vetenskap').concat(
+        this.getSamples(2, humanism, 'Humanism')))
+    };
+    let block3 = {
       leftCategories: { first: 'Kvinna', second: 'Vetenskap' },
       rightCategories: { first: 'Man', second: 'Humanism' },
-      stimuli: stimuli
+      stimuli: _.shuffle(
+        this.getSamples(2, woman, 'Kvinna').concat(
+        this.getSamples(2, man, 'Man')).concat(
+        this.getSamples(2, science, 'Vetenskap')).concat(
+        this.getSamples(2, humanism, 'Humanism')))
     };
+
+    this.currentBlock = 0;
+    this.testBlocks = [block1, block2, block3];
   }
 
   constructor(private nav: NavController, navParams: NavParams) {
@@ -68,19 +88,28 @@ export class IatPage {
   nextExample() {
     console.log("nextExample()");
     this.showError = false;
-    // if (this.navBackAlert_.leavingPage)
-    //   return;
 
-    if (this.currentIndex == this.testBlock.stimuli.length - 1) {
-      // No more examples, training finished
+    console.log('A');
+
+    if (this.currentBlock === (this.testBlocks.length - 1)
+      && (this.currentIndex === (this.testBlocks[this.currentBlock].stimuli.length - 1))) {
+      // No more examples, iat finished
       this.navBackAlert_ = null;
       this.nav.pop();
       return;
     }
+    console.log('B');
+
+    if (this.currentIndex === (this.testBlocks[this.currentBlock].stimuli.length - 1)) {
+      // End of block, transition to next block
+      this.currentBlock += 1;
+      this.currentIndex = -1;
+    }
+    console.log('C CB ' + this.currentBlock );
 
     this.time = Date.now();
     this.currentIndex += 1;
-    this.currentStimuli = this.testBlock.stimuli[this.currentIndex];
+    this.currentStimuli = this.testBlocks[this.currentBlock].stimuli[this.currentIndex];
   }
 
   showError: boolean = false;
@@ -99,11 +128,11 @@ export class IatPage {
     console.log('this.currentStimuli.category: ' + this.currentStimuli.category);
 
     if ((pressCategory === 'LEFT'
-    && (this.currentStimuli.category === this.testBlock.leftCategories.first
-      || this.currentStimuli.category === this.testBlock.leftCategories.second))
+    && (this.currentStimuli.category === this.testBlocks[this.currentBlock].leftCategories.first
+      || this.currentStimuli.category === this.testBlocks[this.currentBlock].leftCategories.second))
       || (pressCategory === 'RIGHT'
-      && (this.currentStimuli.category === this.testBlock.rightCategories.first
-        || this.currentStimuli.category === this.testBlock.rightCategories.second))) {
+      && (this.currentStimuli.category === this.testBlocks[this.currentBlock].rightCategories.first
+        || this.currentStimuli.category === this.testBlocks[this.currentBlock].rightCategories.second))) {
 
     // Correct response - tap on counter stereotype - show positive response
 

@@ -1,15 +1,19 @@
 <ion-content padding class="i-a-t-page">
 
   <div text-left class="stimuli-category stimuli-category-left">
-    {{testBlock.leftCategories.first}}<br>
-    <div class="stimuli-category-separator">eller</div>
-    {{testBlock.leftCategories.second}}
+    {{testBlocks[currentBlock].leftCategories.first}}<br>
+    <div *ngIf="testBlocks[currentBlock].leftCategories.second">
+      <div class="stimuli-category-separator">eller</div>
+      {{testBlocks[currentBlock].leftCategories.second}}
+    </div>
   </div>
 
   <div text-right class="stimuli-category stimuli-category-right">
-    {{testBlock.rightCategories.first}}<br>
-    <div class="stimuli-category-separator">eller</div>
-    {{testBlock.rightCategories.second}}
+    {{testBlocks[currentBlock].rightCategories.first}}<br>
+    <div *ngIf="testBlocks[currentBlock].rightCategories.second">
+      <div class="stimuli-category-separator">eller</div>
+      {{testBlocks[currentBlock].rightCategories.second}}
+    </div>
   </div>
 
   <div class="stimuli">
