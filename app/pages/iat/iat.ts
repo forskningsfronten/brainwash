@@ -12,6 +12,20 @@ interface TestBlock {
   stimuli: Stimuli[];
 }
 
+interface Concept {
+  title: string,
+  words: string[]
+}
+
+// 1A and 1B are semanitcally orthogonal, i.e. man & woman
+// 2A and 2B are semanitcally orthogonal, i.e. science & humanism
+interface ConceptSet {
+  concept1A: Concept,
+  concept1B: Concept,
+  concept2A: Concept,
+  concept2B: Concept
+}
+
 interface Stimuli {
   category: string;
   word: string;
@@ -39,40 +53,98 @@ export class IatPage {
       }));
   }
 
+  private getConceptSet() {
+    return {
+      concept1A: {
+        title: 'Kvinna',
+        words: ['Kvinna', 'Tjej', 'Moster', 'Dotter', 'Fru', 'Dam', 'Moder', 'Mormor']
+      },
+      concept1B: {
+        title: 'Man',
+        words: ['Man', 'Kille', 'Far', 'Herre', 'Farfar', 'Fästman', 'Son', 'Farbror']
+      },
+      concept2A: {
+        title: 'Humanism',
+        words: ['Filosofi', 'Estetik', 'Konstvetenskap', 'Litteraturvetenskap', 'Språkvetenskap', 'Musikvetenskap', 'Historia']
+      },
+      concept2B: {
+        title: 'Vetenskap',
+        words: ['Biologi', 'Fysik', 'Kemi', 'Matematik', 'Geologi', 'Astronomi', 'Ingenjörsvetenskap']
+      }
+    }
+  }
+
   private createTestData() {
-    let woman = ['Kvinna', 'Tjej', 'Moster', 'Dotter', 'Fru', 'Dam', 'Moder', 'Mormor'];
-    let man = ['Man', 'Kille', 'Far', 'Herre', 'Farfar', 'Fästman', 'Son', 'Farbror'];
-    let humanism = ['Filosofi', 'Estetik', 'Konstvetenskap', 'Litteraturvetenskap', 'Språkvetenskap', 'Musikvetenskap', 'Historia'];
-    let science = ['Biologi', 'Fysik', 'Kemi', 'Matematik', 'Geologi', 'Astronomi', 'Ingenjörsvetenskap'];
+    let concepts = this.getConceptSet();
 
-    let stimuli = _.shuffle(this.getSamples(5, woman, 'Kvinna').concat(this.getSamples(5, man, 'Man')));
-
+    // n = 20 : Practice
     let block1 = {
-      leftCategories: { first: 'Kvinna', second: null },
-      rightCategories: { first: 'Man', second: null },
+      leftCategories: { first: concepts.concept1A.title, second: null },
+      rightCategories: { first: concepts.concept1B.title, second: null },
       stimuli: _.shuffle(
-        this.getSamples(2, woman, 'Kvinna').concat(
-        this.getSamples(2, man, 'Man')))
+        this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
+        this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)))
     };
+    // n = 20 : Practice
     let block2 = {
-      leftCategories: { first: 'Vetenskap', second: null },
-      rightCategories: { first: 'Humanism', second: null },
+      leftCategories: { first: concepts.concept2A.title, second: null },
+      rightCategories: { first: concepts.concept2B.title, second: null },
       stimuli: _.shuffle(
-        this.getSamples(2, science, 'Vetenskap').concat(
-        this.getSamples(2, humanism, 'Humanism')))
+        this.getSamples(2, concepts.concept2A.words, concepts.concept2A.title).concat(
+        this.getSamples(2, concepts.concept2B.words, concepts.concept2B.title)))
     };
+    // n = 20 : Practice
     let block3 = {
-      leftCategories: { first: 'Kvinna', second: 'Vetenskap' },
-      rightCategories: { first: 'Man', second: 'Humanism' },
+      leftCategories: { first: concepts.concept1A.title, second: concepts.concept2A.title },
+      rightCategories: { first: concepts.concept1B.title, second: concepts.concept2B.title },
       stimuli: _.shuffle(
-        this.getSamples(2, woman, 'Kvinna').concat(
-        this.getSamples(2, man, 'Man')).concat(
-        this.getSamples(2, science, 'Vetenskap')).concat(
-        this.getSamples(2, humanism, 'Humanism')))
+        this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
+        this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
+        this.getSamples(2, concepts.concept2A.words, concepts.concept2A.title)).concat(
+        this.getSamples(2, concepts.concept2B.words, concepts.concept2B.title)))
     };
+    // n = 40 : Test
+    let block4 = {
+      leftCategories: { first: concepts.concept1A.title, second: concepts.concept2A.title },
+      rightCategories: { first: concepts.concept1B.title, second: concepts.concept2B.title },
+      stimuli: _.shuffle(
+        this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
+        this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
+        this.getSamples(2, concepts.concept2A.words, concepts.concept2A.title)).concat(
+        this.getSamples(2, concepts.concept2B.words, concepts.concept2B.title)))
+    };
+    // n = 20 : Practice
+    let block5 = {
+      leftCategories: { first: concepts.concept1B.title, second: null },
+      rightCategories: { first: concepts.concept1A.title, second: null },
+      stimuli: _.shuffle(
+        this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
+        this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)))
+    };
+    // n = 20 : Practice
+    let block6 = {
+      leftCategories: { first: concepts.concept1B.title, second: concepts.concept2A.title },
+      rightCategories: { first: concepts.concept1A.title, second: concepts.concept2B.title },
+      stimuli: _.shuffle(
+        this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
+        this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
+        this.getSamples(2, concepts.concept2A.words, concepts.concept2A.title)).concat(
+        this.getSamples(2, concepts.concept2B.words, concepts.concept2B.title)))
+    };
+    // n = 40 : Test
+    let block7 = {
+      leftCategories: { first: concepts.concept1B.title, second: concepts.concept2A.title },
+      rightCategories: { first: concepts.concept1A.title, second: concepts.concept2B.title },
+      stimuli: _.shuffle(
+        this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
+        this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
+        this.getSamples(2, concepts.concept2A.words, concepts.concept2A.title)).concat(
+        this.getSamples(2, concepts.concept2B.words, concepts.concept2B.title)))
+    };
+
 
     this.currentBlock = 0;
-    this.testBlocks = [block1, block2, block3];
+    this.testBlocks = [block1, block2, block3, block4, block5, block6, block7];
   }
 
   constructor(private nav: NavController, navParams: NavParams) {
