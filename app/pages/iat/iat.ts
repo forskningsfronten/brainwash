@@ -3,72 +3,130 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams, Animation, Alert} from 'ionic-angular';
 import {StartPage} from '../start-page/start-page';
+import {NavBackAlert} from '../core/ionic-nav-ext';
 import * as _ from 'lodash';
+
+interface TestBlock {
+  leftCategories: string[];
+  rightCategories: string[];
+  stimuli: Stimuli[];
+}
+
+interface Stimuli {
+  category: string;
+  word: string;
+}
 
 @Component({
   templateUrl: 'build/pages/iat/iat.html'
 })
-
 export class IatPage {
-
-  firstLeftCategory: string;
-  firstRightCategory: string;
-  secondLeftCategory: string;
-  secondRightCategory: string;
   stimuli: string;
 
+  leftPage: boolean;
 
-    leftPage: boolean;
+  time: number;
+  currentIndex: number;
 
-    constructor(private nav: NavController, navParams: NavParams) {
-        console.log("CTOR");
+  currentStimuli: Stimuli;
+  testBlock: TestBlock;
 
-        this.firstLeftCategory = 'Kvinna';
-        this.firstRightCategory = 'Man';
-        this.secondLeftCategory = 'Vetenskap';
-        this.secondRightCategory = 'Humaniora';
-        this.stimuli = 'Kemi';
+
+  private getSamples(n:number, values:string[], category: string) {
+    return Array(n).fill(0).map((_, idx) => ({
+        word: values[idx % values.length],
+        category: category
+      }));
+  }
+
+  private createTestData() {
+    let woman = ['Kvinna', 'Tjej', 'Moster', 'Dotter', 'Fru', 'Dam', 'Moder', 'Mormor'];
+    let man = ['Man', 'Kille', 'Far', 'Herre', 'Farfar', 'Fästman', 'Son', 'Farbror'];
+    let humanism = ['Filosofi', 'Estetik', 'Konstvetenskap', 'Litteraturvetenskap', 'Språkvetenskap', 'Musikvetenskap', 'Historia'];
+    let science = ['Biologi', 'Fysik', 'Kemi', 'Matematik', 'Geologi', 'Astronomi', 'Ingenjörsvetenskap'];
+
+    let stimuli = _.shuffle(this.getSamples(5, woman, 'Kvinna')
+    .concat(this.getSamples(5, man, 'Man')));
+
+    this.testBlock = {
+      leftCategories: ['Kvinna', 'Vetenskap'],
+      rightCategories: ['Man', 'Humanism'],
+      stimuli: stimuli
+    };
+  }
+
+  constructor(private nav: NavController, navParams: NavParams) {
+    console.log("CTOR");
+
+    this.navBackAlert_ = new NavBackAlert(nav, 'Training Canceled', 'Now exiting');
+
+    this.createTestData();
+    this.currentIndex = -1;
+    this.nextExample();
+  }
+
+  nextExample() {
+    console.log("nextExample()");
+    this.showError = false;
+    // if (this.navBackAlert_.leavingPage)
+    //   return;
+
+    if (this.currentIndex == this.testBlock.stimuli.length - 1) {
+      // No more examples, training finished
+      this.navBackAlert_ = null;
+      this.nav.pop();
+      return;
     }
 
-    leftPress() {
-      console.log('Left Press');
-    }
+    this.time = Date.now();
+    this.currentIndex += 1;
+    this.currentStimuli = this.testBlock.stimuli[this.currentIndex];
+  }
 
-    rightPress() {
-      console.log('Right Press');
-    }
+  showError: boolean = false;
 
-    swipeLeftEvent($event) {
-      console.log('swipe left');
-    }
+  leftPress() {
+    this.press('LEFT');
+  }
 
-    swipeRightEvent($event) {
-      console.log('swipe right');
-    }
+  rightPress() {
+    this.press('RIGHT');
+  }
 
-    confirmedExit: boolean = false;
+  private press(pressCategory: string) {
+    console.log('Press ' + pressCategory);
 
-    ionViewWillLeave() {
-      if(!this.confirmedExit) {
-        let confirm = Alert.create({
-          title: 'IAT canceled',
-          message: 'Now leaving',
-          buttons: [{
-            text: 'Ok',
-            handler: () => {
-              this.exitPage();
-            }
-          }]
-        });
-        this.nav.present(confirm);
-      }
-    }
+    console.log('this.currentStimuli.category: ' + this.currentStimuli.category);
 
-    exitPage(){
-      this.leftPage = true;
-      this.confirmedExit = true;
-      this.nav.remove().then(() => {
-        this.nav.pop();
-      });
+    if ((pressCategory === 'LEFT'
+    && (this.currentStimuli.category === this.testBlock.leftCategories[0]
+      || this.currentStimuli.category === this.testBlock.leftCategories[1]))
+      || (pressCategory === 'RIGHT'
+      && (this.currentStimuli.category === this.testBlock.rightCategories[0]
+        || this.currentStimuli.category === this.testBlock.rightCategories[1]))) {
+
+    // Correct response - tap on counter stereotype - show positive response
+
+    let delay = Date.now() - this.time;
+    console.log('Correct response after: ' + delay + ' ms');
+
+    // this.result.push({
+    //   example: this.current,
+    //   tapTime: delay
+    // });
+
+    this.nextExample();
     }
+    else {
+      // Wrong response
+      console.log('Wrong response');
+      this.showError = true;
+    }
+  }
+
+  private navBackAlert_: NavBackAlert;
+  ionViewWillLeave() {
+    if (this.navBackAlert_)
+      this.navBackAlert_.showAlert();
+  }
 }

@@ -82,8 +82,11 @@ export class TrainingPage {
         console.log("CTOR");
         this.navBackAlert_ = new NavBackAlert(nav, 'Training Canceled', 'Now exiting');
 
-        this.settingsStorage.getValue(this.settingsStorage.playTrainingSoundsKey)
-        .then(val => { console.log('SOUND ' + val); this.playSound = val; });
+        this.settingsStorage
+          .getValue(this.settingsStorage.playTrainingSoundsKey)
+          .then(val => {
+            console.log('play sound val: ' + val);
+            this.playSound = val;});
 
         this.showCard = true;
 
@@ -132,6 +135,7 @@ export class TrainingPage {
 
         if (this.currentIndex == this.examples.length - 1) {
             // No more examples, training finished
+            this.navBackAlert_ = null;
             this.nav.pop();
             return;
         }
@@ -153,6 +157,7 @@ export class TrainingPage {
     tap() {
         console.log("TAP - cancelling timeout");
 
+        console.log('play sound val: ' + this.playSound);
         if (this.showResult) {
             console.log("tap while showing result doesn't count");
             return;
@@ -193,6 +198,7 @@ export class TrainingPage {
     }
 
     ionViewWillLeave() {
-      this.navBackAlert_.showAlert();
+      if (this.navBackAlert_)
+        this.navBackAlert_.showAlert();
     }
 }

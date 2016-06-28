@@ -1,20 +1,24 @@
-<ion-content padding class="i-a-t-page" (swipeleft)="swipeLeftEvent($event)" (swiperight)="swipeRightEvent($event)">
+<ion-content padding class="i-a-t-page">
 
   <div text-left class="stimuli-category stimuli-category-left">
-    {{firstLeftCategory}}<br>
+    {{testBlock.leftCategories[0]}}<br>
     <div class="stimuli-category-separator">eller</div>
-    {{secondLeftCategory}}
+    {{testBlock.leftCategories[1]}}
   </div>
 
   <div text-right class="stimuli-category stimuli-category-right">
-    {{firstRightCategory}}<br>
+    {{testBlock.rightCategories[0]}}<br>
     <div class="stimuli-category-separator">eller</div>
-    {{secondRightCategory}}
+    {{testBlock.rightCategories[1]}}
   </div>
 
   <div class="stimuli">
-    {{stimuli}}
+    {{currentStimuli.word}}
   </div>
+
+  <button fab fab-bottom fab-center clear *ngIf='showError'>
+    ERROR
+  </button>
 
   <button fab fab-left fab-bottom dark outline (click)="leftPress()">
     <ion-icon name="arrow-round-back"></ion-icon>
