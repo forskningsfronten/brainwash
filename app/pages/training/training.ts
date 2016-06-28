@@ -31,6 +31,7 @@ export class TrainingPage {
     currentIndex: number;
     showCard: boolean;
     showResult: boolean;
+    playSound: boolean;
     correctResponse: boolean;
     timeout;
 
@@ -73,7 +74,7 @@ export class TrainingPage {
       return _.shuffle(testSet);
     }
 
-    playSound: boolean;
+
     private settingsStorage = new SettingsStorage();
 
     private navBackAlert_: NavBackAlert;
@@ -85,15 +86,18 @@ export class TrainingPage {
         this.settingsStorage
           .getValue(this.settingsStorage.playTrainingSoundsKey)
           .then(val => {
-            console.log('play sound val: ' + val);
-            this.playSound = val;});
+            this.playSound = (val === 'true');
+          });
 
         this.showCard = true;
 
         this.examples = this.createTestData();
         this.result = new Array<ITrainingExampleResult>();
         this.currentIndex = -1;
-        this.nextExample(false);
+    }
+
+    instructionTap() {
+      this.nextExample(false);
     }
 
     showBlank() {

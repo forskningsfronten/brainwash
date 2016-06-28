@@ -19,6 +19,17 @@
     background-color: $wrong-color;
   }
 
+  .instruction {
+      height: 100%;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      align-items: center;
+      width: auto;
+  }
+
   @keyframes shake {
     0% {transform: translateX(0);}
     12.5% {transform: translateX(-6px) rotateY(-5deg)}
