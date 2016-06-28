@@ -1,20 +1,21 @@
 /// <reference path="../../../typings/modules/lodash/index.d.ts" />
 
 import {Component} from '@angular/core';
-import {NavController, NavParams, Animation, Alert} from 'ionic-angular';
+import {NavController, NavParams, ViewController, Animation, Alert} from 'ionic-angular';
 import {StartPage} from '../start-page/start-page';
+import {TrainingResultPage} from '../training-result/training-result';
 import {SettingsStorage} from '../settings/settings-storage';
 import {CancelablePromise, timeOutPromise} from '../core/promise-ext';
 import {NavBackAlert} from '../core/ionic-nav-ext';
 import * as _ from 'lodash';
 
-interface TrainingExample {
+export interface TrainingExample {
     word: string;
     image: string;
     counterStereotype: boolean;
 }
 
-interface ITrainingExampleResult {
+export interface ITrainingExampleResult {
   example: TrainingExample;
   tapTime: number; // ms from stimuli exposure to tap (or null if no tap)
 }
@@ -45,25 +46,27 @@ export class TrainingPage {
       let maleFaces = ['img/2666384408_1.jpg', 'img/2652699508_1.jpg', 'img/10697993_1.jpg', 'img/20315024_1.jpg', 'img/100040721_2.jpg'];
       let femaleFaces = ['img/2658969370_1.jpg', 'img/2651953293_1.jpg', 'img/1629243_1.jpg', 'img/30844800_1.jpg', 'img/114530171_1.jpg'];
 
-      let testSet = Array(18).fill(0).map((_, idx) => (
+      let n = 6;//36;
+
+      let testSet = Array(n/2).fill(0).map((_, idx) => (
         {
           word: sciWords[this.randIdx(sciWords.length)],
           image: femaleFaces[this.randIdx(femaleFaces.length)],
           counterStereotype: true
         }
-      )).concat(new Array(6).fill(0).map((_, idx) => {
+      )).concat(new Array(n/6).fill(0).map((_, idx) => {
         return {
           word: artWords[this.randIdx(artWords.length)],
           image: femaleFaces[this.randIdx(femaleFaces.length)],
           counterStereotype: false
         };
-      })).concat(new Array(6).fill(0).map((_, idx) => {
+      })).concat(new Array(n/6).fill(0).map((_, idx) => {
         return {
           word: sciWords[this.randIdx(sciWords.length)],
           image: maleFaces[this.randIdx(maleFaces.length)],
           counterStereotype: false
         };
-      })).concat(new Array(6).fill(0).map((_, idx) => {
+      })).concat(new Array(n/6).fill(0).map((_, idx) => {
         return {
           word: artWords[this.randIdx(artWords.length)],
           image: maleFaces[this.randIdx(maleFaces.length)],
@@ -79,7 +82,7 @@ export class TrainingPage {
 
     private navBackAlert_: NavBackAlert;
 
-    constructor(private nav: NavController, private navParams: NavParams) {
+    constructor(private nav: NavController, private navParams: NavParams, private viewCtrl: ViewController) {
         console.log("CTOR");
         this.navBackAlert_ = new NavBackAlert(nav, 'Training Canceled', 'Now exiting');
 
@@ -140,7 +143,13 @@ export class TrainingPage {
         if (this.currentIndex == this.examples.length - 1) {
             // No more examples, training finished
             this.navBackAlert_ = null;
-            this.nav.pop();
+
+            this.nav.push(TrainingResultPage, {result: this.result})
+                    .then(() => {
+                      // Remove this page to make back go back to root from results page
+                      const index = this.nav.indexOf(this.viewCtrl);
+                      this.nav.remove(index);
+                    });
             return;
         }
 
