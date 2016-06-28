@@ -7,8 +7,8 @@ import {NavBackAlert} from '../core/ionic-nav-ext';
 import * as _ from 'lodash';
 
 interface TestBlock {
-  leftCategories: { first: string, second: string };
-  rightCategories: { first: string, second: string };
+  leftConcepts: { first: string, second: string };
+  rightConcepts: { first: string, second: string };
   stimuli: Stimuli[];
 }
 
@@ -27,7 +27,7 @@ interface ConceptSet {
 }
 
 interface Stimuli {
-  category: string;
+  ofConcept: string;
   word: string;
 }
 
@@ -46,10 +46,10 @@ export class IatPage {
   testBlocks: TestBlock[];
   currentBlock = -1;
 
-  private getSamples(n:number, values:string[], category: string) {
+  private getSamples(n:number, values:string[], concept: string) {
     return Array(n).fill(0).map((_, idx) => ({
         word: values[idx % values.length],
-        category: category
+        ofConcept: concept
       }));
   }
 
@@ -79,24 +79,24 @@ export class IatPage {
 
     // n = 20 : Practice
     let block1 = {
-      leftCategories: { first: concepts.concept1A.title, second: null },
-      rightCategories: { first: concepts.concept1B.title, second: null },
+      leftConcepts: { first: concepts.concept1A.title, second: null },
+      rightConcepts: { first: concepts.concept1B.title, second: null },
       stimuli: _.shuffle(
         this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
         this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)))
     };
     // n = 20 : Practice
     let block2 = {
-      leftCategories: { first: concepts.concept2A.title, second: null },
-      rightCategories: { first: concepts.concept2B.title, second: null },
+      leftConcepts: { first: concepts.concept2A.title, second: null },
+      rightConcepts: { first: concepts.concept2B.title, second: null },
       stimuli: _.shuffle(
         this.getSamples(2, concepts.concept2A.words, concepts.concept2A.title).concat(
         this.getSamples(2, concepts.concept2B.words, concepts.concept2B.title)))
     };
     // n = 20 : Practice
     let block3 = {
-      leftCategories: { first: concepts.concept1A.title, second: concepts.concept2A.title },
-      rightCategories: { first: concepts.concept1B.title, second: concepts.concept2B.title },
+      leftConcepts: { first: concepts.concept1A.title, second: concepts.concept2A.title },
+      rightConcepts: { first: concepts.concept1B.title, second: concepts.concept2B.title },
       stimuli: _.shuffle(
         this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
         this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
@@ -105,8 +105,8 @@ export class IatPage {
     };
     // n = 40 : Test
     let block4 = {
-      leftCategories: { first: concepts.concept1A.title, second: concepts.concept2A.title },
-      rightCategories: { first: concepts.concept1B.title, second: concepts.concept2B.title },
+      leftConcepts: { first: concepts.concept1A.title, second: concepts.concept2A.title },
+      rightConcepts: { first: concepts.concept1B.title, second: concepts.concept2B.title },
       stimuli: _.shuffle(
         this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
         this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
@@ -115,16 +115,16 @@ export class IatPage {
     };
     // n = 20 : Practice
     let block5 = {
-      leftCategories: { first: concepts.concept1B.title, second: null },
-      rightCategories: { first: concepts.concept1A.title, second: null },
+      leftConcepts: { first: concepts.concept1B.title, second: null },
+      rightConcepts: { first: concepts.concept1A.title, second: null },
       stimuli: _.shuffle(
         this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
         this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)))
     };
     // n = 20 : Practice
     let block6 = {
-      leftCategories: { first: concepts.concept1B.title, second: concepts.concept2A.title },
-      rightCategories: { first: concepts.concept1A.title, second: concepts.concept2B.title },
+      leftConcepts: { first: concepts.concept1B.title, second: concepts.concept2A.title },
+      rightConcepts: { first: concepts.concept1A.title, second: concepts.concept2B.title },
       stimuli: _.shuffle(
         this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
         this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
@@ -133,8 +133,8 @@ export class IatPage {
     };
     // n = 40 : Test
     let block7 = {
-      leftCategories: { first: concepts.concept1B.title, second: concepts.concept2A.title },
-      rightCategories: { first: concepts.concept1A.title, second: concepts.concept2B.title },
+      leftConcepts: { first: concepts.concept1B.title, second: concepts.concept2A.title },
+      rightConcepts: { first: concepts.concept1A.title, second: concepts.concept2B.title },
       stimuli: _.shuffle(
         this.getSamples(2, concepts.concept1A.words, concepts.concept1A.title).concat(
         this.getSamples(2, concepts.concept1B.words, concepts.concept1B.title)).concat(
@@ -194,8 +194,8 @@ export class IatPage {
     this.press('RIGHT');
   }
 
-  private press(pressCategory: string) {
-    console.log('Press ' + pressCategory);
+  private press(pressedButton: string) {
+    console.log('Press ' + pressedButton);
 
     if (this.currentIndex === -1) {
       // Instruction screen - kick off
@@ -203,14 +203,14 @@ export class IatPage {
       return;
     }
 
-    console.log('this.currentStimuli.category: ' + this.currentStimuli.category);
+    console.log('this.currentStimuli.ofConcept: ' + this.currentStimuli.ofConcept);
 
-    if ((pressCategory === 'LEFT'
-    && (this.currentStimuli.category === this.testBlocks[this.currentBlock].leftCategories.first
-      || this.currentStimuli.category === this.testBlocks[this.currentBlock].leftCategories.second))
-      || (pressCategory === 'RIGHT'
-      && (this.currentStimuli.category === this.testBlocks[this.currentBlock].rightCategories.first
-        || this.currentStimuli.category === this.testBlocks[this.currentBlock].rightCategories.second))) {
+    if ((pressedButton === 'LEFT'
+    && (this.currentStimuli.ofConcept === this.testBlocks[this.currentBlock].leftConcepts.first
+      || this.currentStimuli.ofConcept === this.testBlocks[this.currentBlock].leftConcepts.second))
+      || (pressedButton === 'RIGHT'
+      && (this.currentStimuli.ofConcept === this.testBlocks[this.currentBlock].rightConcepts.first
+        || this.currentStimuli.ofConcept === this.testBlocks[this.currentBlock].rightConcepts.second))) {
 
     // Correct response - tap on counter stereotype - show positive response
 

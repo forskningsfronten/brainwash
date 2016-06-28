@@ -1,18 +1,18 @@
 <ion-content padding class="i-a-t-page">
 
-  <div text-left class="stimuli-category stimuli-category-left">
-    {{testBlocks[currentBlock].leftCategories.first}}<br>
-    <div *ngIf="testBlocks[currentBlock].leftCategories.second">
-      <div class="stimuli-category-separator">eller</div>
-      {{testBlocks[currentBlock].leftCategories.second}}
+  <div text-left class="stimuli-concept stimuli-concept-left">
+    {{testBlocks[currentBlock].leftConcepts.first}}<br>
+    <div *ngIf="testBlocks[currentBlock].leftConcepts.second">
+      <div class="stimuli-concept-separator">eller</div>
+      {{testBlocks[currentBlock].leftConcepts.second}}
     </div>
   </div>
 
-  <div text-right class="stimuli-category stimuli-category-right">
-    {{testBlocks[currentBlock].rightCategories.first}}<br>
-    <div *ngIf="testBlocks[currentBlock].rightCategories.second">
-      <div class="stimuli-category-separator">eller</div>
-      {{testBlocks[currentBlock].rightCategories.second}}
+  <div text-right class="stimuli-concept stimuli-concept-right">
+    {{testBlocks[currentBlock].rightConcepts.first}}<br>
+    <div *ngIf="testBlocks[currentBlock].rightConcepts.second">
+      <div class="stimuli-concept-separator">eller</div>
+      {{testBlocks[currentBlock].rightConcepts.second}}
     </div>
   </div>
 
