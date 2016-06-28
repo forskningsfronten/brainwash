@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {TrainingPage} from '../training/training';
+import {TrainingIntroPage} from '../training-intro/training-intro';
 import {IatPage} from '../iat/iat';
 import {SettingsPage} from '../settings/settings';
 
@@ -14,7 +14,7 @@ export class StartPage {
   }
 
   startTraining() {
-    this.nav.push(TrainingPage);
+    this.nav.push(TrainingIntroPage);
   }
 
   startIAT() {

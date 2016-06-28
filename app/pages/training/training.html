@@ -1,24 +1,14 @@
 <ion-content>
-  <div *ngIf="currentIndex !== -1">
-    <audio autoplay="autoplay" *ngIf="playSound && showResult && correctResponse">
-      <source src="sound/Sound_2.mp3" type="audio/mp3">
-    </audio>
+  <audio autoplay="autoplay" *ngIf="playSound && showResult && correctResponse">
+    <source src="sound/Sound_2.mp3" type="audio/mp3">
+  </audio>
 
-    <ion-card [ngClass]="{'tap-result-correct' : showResult && correctResponse, 'tap-result-wrong' : showResult && !correctResponse}" (click)="tap()" *ngIf="showCard">
-      <img padding style="padding-bottom: 0px;" src="{{current.image}}"/>
-      <ion-card-content >
-        <ion-card-title>
-          {{current.word}}
-        </ion-card-title>
-      </ion-card-content>
-    </ion-card>
-  </div>
-
-  <div *ngIf="currentIndex === -1" class="instruction" (click)="instructionTap()">
-    <ion-card padding style="text-align:left;">
-        <h2>Instruction...</h2>
-        <hr>
-        <p>Klicka korten med bilder av kvinnor som har motstereotypa ord. Klicka inte på de andra korten.</p>
-    </ion-card>
-  </div>
+  <ion-card [ngClass]="{'tap-result-correct' : showResult && correctResponse, 'tap-result-wrong' : showResult && !correctResponse}" (click)="tap()" *ngIf="showCard">
+    <img padding style="padding-bottom: 0px;" src="{{current.image}}"/>
+    <ion-card-content >
+      <ion-card-title>
+        {{current.word}}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

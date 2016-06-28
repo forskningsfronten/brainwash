@@ -97,10 +97,7 @@ export class TrainingPage {
         this.examples = this.createTestData();
         this.result = new Array<ITrainingExampleResult>();
         this.currentIndex = -1;
-    }
-
-    instructionTap() {
-      this.nextExample(false);
+        this.nextExample(false);
     }
 
     showBlank() {
