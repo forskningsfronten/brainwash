@@ -44,7 +44,24 @@ export class TrainingPage {
       let sciWords = ["Science", "Chemistry", "Math", "Geometry", "Engineering"];
       let artWords = ["Dance", "Theater", "Drama", "History", "Music"];
       let maleFaces = ['img/2666384408_1.jpg', 'img/2652699508_1.jpg', 'img/10697993_1.jpg', 'img/20315024_1.jpg', 'img/100040721_2.jpg'];
-      let femaleFaces = ['img/2658969370_1.jpg', 'img/2651953293_1.jpg', 'img/1629243_1.jpg', 'img/30844800_1.jpg', 'img/114530171_1.jpg'];
+      let femaleFaces = [
+        'img/woman/10050800605_645f91403a_o.jpg',
+        'img/woman/10067707055_5ab38c752c_o.jpg',
+        'img/woman/13069588075_3812ca1dfb_o.jpg',
+        'img/woman/14209441301_54d10659a9_o.jpg',
+        'img/woman/14370089486_aca543bfbc_o.jpg',
+        'img/woman/14460234695_b1ecbba0f3_o.jpg',
+        'img/woman/14488469810_02b7828ff6_o.jpg',
+        'img/woman/14826094231_dfcd0d9f86_o.jpg',
+        'img/woman/14955153745_877641c9e4_o.jpg',
+        'img/woman/15385876310_2ce3a89e47_o.jpg',
+        'img/woman/26336131024_c20ef948fe_o.jpg',
+        'img/woman/2684974802_8c532c8e28_o.jpg',
+        'img/woman/2977240917_a34b938c40_o.jpg',
+        'img/woman/5238565943_335b63a582_o.jpg',
+        'img/woman/5594811655_a6d4d49b56_o.jpg',
+        'img/woman/7818379162_7a770cfe29_o.jpg'];
+
 
       let n = 6;//36;
 
