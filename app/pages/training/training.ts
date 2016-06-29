@@ -3,7 +3,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams, ViewController, Animation, Alert} from 'ionic-angular';
 import {StartPage} from '../start-page/start-page';
-import {TrainingResultPage} from '../training-result/training-result';
+import {TrainingResultPage} from '../training/result';
 import {SettingsStorage} from '../settings/settings-storage';
 import {CancelablePromise, timeOutPromise} from '../core/promise-ext';
 import {NavBackAlert} from '../core/ionic-nav-ext';
