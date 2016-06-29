@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, ViewController, Slides } from 'ionic-angular';
 import {TrainingPage} from '../training/training';
+import {SettingsStorage} from '../settings/settings-storage';
 
 /*
   Generated class for the TrainingIntroPage page.
@@ -14,7 +15,21 @@ import {TrainingPage} from '../training/training';
 export class TrainingIntroPage {
   @ViewChild('introSlider') slider: Slides;
 
-  constructor(private nav: NavController, private viewCtrl: ViewController) {}
+  private skipIntroChecked: boolean;
+  private settingsStorage = new SettingsStorage();
+
+  constructor(private nav: NavController, private viewCtrl: ViewController) {
+    this.settingsStorage
+      .getValue(this.settingsStorage.showTrainingInstructionsKey)
+      .then(val => {
+        this.skipIntroChecked = !(val === 'true');
+      });
+  }
+
+  skipIntroSettingToggle() {
+    console.log("Skip intro toggle " + this.skipIntroChecked);
+    this.settingsStorage.setValue(this.settingsStorage.showTrainingInstructionsKey, !this.skipIntroChecked)
+  }
 
   startTraining() {
     this.nav.push(TrainingPage)

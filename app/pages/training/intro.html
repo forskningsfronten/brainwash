@@ -27,7 +27,7 @@
     </ion-slide>
       <ion-slide>
         <ion-toolbar style="position:fixed; top:0px;">
-          <ion-label>Skip intro</ion-label><ion-checkbox></ion-checkbox>
+          <ion-label>Skip intro</ion-label><ion-checkbox [(ngModel)]="skipIntroChecked" (ionChange)="skipIntroSettingToggle()"></ion-checkbox>
         </ion-toolbar>
         <h2>Ready?</h2>
         <button primary (click)="startTraining()">Start Training</button>
