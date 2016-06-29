@@ -1,12 +1,13 @@
 /// <reference path="../../../typings/modules/lodash/index.d.ts" />
 
 import {Component} from '@angular/core';
-import {NavController, NavParams, Animation, Alert} from 'ionic-angular';
+import {NavController, NavParams, ViewController, Animation, Alert} from 'ionic-angular';
 import {StartPage} from '../start-page/start-page';
 import {NavBackAlert} from '../core/ionic-nav-ext';
+import {IatResultPage} from './result';
 import * as _ from 'lodash';
 
-interface TestBlock {
+export interface TestBlock {
   leftConcepts: { first: string, second: string };
   rightConcepts: { first: string, second: string };
   stimuli: Stimuli[];
@@ -147,9 +148,10 @@ export class IatPage {
 
     this.currentBlock = 0;
     this.testBlocks = [block1, block2, block3, block4, block5, block6, block7];
+    //this.testBlocks = [block1];
   }
 
-  constructor(private nav: NavController, navParams: NavParams) {
+  constructor(private nav: NavController, private navParams: NavParams, private viewCtrl: ViewController) {
     console.log("CTOR");
 
     this.navBackAlert_ = new NavBackAlert(nav, 'Training Canceled', 'Now exiting');
@@ -168,7 +170,12 @@ export class IatPage {
       && (this.currentIndex === (this.testBlocks[this.currentBlock].stimuli.length - 1))) {
       // No more examples, iat finished
       this.navBackAlert_ = null;
-      this.nav.pop();
+      this.nav.push(IatResultPage, {result: this.testBlocks})
+        .then(() => {
+          // Remove this page to make back go back to root from results page
+          const index = this.nav.indexOf(this.viewCtrl);
+          this.nav.remove(index);
+        });
       return;
     }
     console.log('B');
