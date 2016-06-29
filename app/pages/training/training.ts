@@ -142,11 +142,11 @@ export class TrainingPage {
             this.navBackAlert_ = null;
 
             this.nav.push(TrainingResultPage, {result: this.result})
-                    .then(() => {
-                      // Remove this page to make back go back to root from results page
-                      const index = this.nav.indexOf(this.viewCtrl);
-                      this.nav.remove(index);
-                    });
+              .then(() => {
+                // Remove this page to make back go back to root from results page
+                const index = this.nav.indexOf(this.viewCtrl);
+                this.nav.remove(index);
+              });
             return;
         }
 

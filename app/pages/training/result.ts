@@ -6,7 +6,7 @@ import { TrainingExample, ITrainingExampleResult } from '../training/training';
 import * as _ from 'lodash';
 
 @Component({
-  templateUrl: 'build/pages/training-result/training-result.html',
+  templateUrl: 'build/pages/training/result.html',
 })
 export class TrainingResultPage {
   //results: ITrainingExampleResult[];

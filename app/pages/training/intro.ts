@@ -9,7 +9,7 @@ import {TrainingPage} from '../training/training';
   Ionic pages and navigation.
 */
 @Component({
-  templateUrl: 'build/pages/training-intro/training-intro.html',
+  templateUrl: 'build/pages/training/intro.html',
 })
 export class TrainingIntroPage {
   @ViewChild('introSlider') slider: Slides;
