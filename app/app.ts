@@ -6,7 +6,7 @@ import {StartPage} from './pages/start-page/start-page';
 @Component({
   templateUrl: 'build/app.html'
 })
-class MyApp {
+export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = StartPage;

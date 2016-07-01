@@ -5,6 +5,7 @@ node_modules/
 www/build/
 platforms/
 plugins/
+coverage/
 *.swp
 .DS_Store
 Thumbs.db
