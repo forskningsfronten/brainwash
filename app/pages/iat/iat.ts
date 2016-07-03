@@ -27,10 +27,11 @@ interface ConceptSet {
   concept2B: Concept
 }
 
-interface Stimuli {
+export interface Stimuli {
   ofConcept: string;
   word: string;
   time: number;
+  error: boolean;
 }
 
 @Component({
@@ -52,7 +53,8 @@ export class IatPage {
     return Array(n).fill(0).map(_ => ({
         word: values[Math.floor(Math.random() * values.length)],
         ofConcept: concept,
-        time: null
+        time: null,
+        error: false,
       }));
   }
 
@@ -227,6 +229,7 @@ export class IatPage {
       // Wrong response
       console.log('Wrong response');
       this.showError = true;
+      this.currentStimuli.error = true;
     }
   }
 
