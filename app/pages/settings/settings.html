@@ -8,7 +8,6 @@
     <ion-toggle (ionChange)="toggleValue(settingsStore.startInstructionsKey)" checked="{{settingsStore.values[settingsStore.startInstructionsKey]}}"></ion-toggle>
   </ion-item>
 
-  <ion-item-group>
     <ion-item-divider>Training</ion-item-divider>
     <ion-item>
       <ion-label>Play Sounds</ion-label>
@@ -22,9 +21,7 @@
       <ion-label>Store Data</ion-label>
       <ion-toggle (ionChange)="toggleValue(settingsStore.storeTrainingDataKey)" checked="{{settingsStore.values[settingsStore.storeTrainingDataKey]}}"></ion-toggle>
     </ion-item>
-  </ion-item-group>
 
-  <ion-item-group>
     <ion-item-divider>IAT</ion-item-divider>
     <ion-item>
       <ion-label>Show Instructions</ion-label>
@@ -34,5 +31,5 @@
       <ion-label>Store Data</ion-label>
       <ion-toggle (ionChange)="toggleValue(settingsStore.storeIATDataKey)" checked="{{settingsStore.values[settingsStore.storeIATDataKey]}}"></ion-toggle>
     </ion-item>
-  </ion-item-group>
+
 </ion-content>

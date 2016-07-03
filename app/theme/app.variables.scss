@@ -26,10 +26,24 @@
 // are different per mode.
 
 $colors: (
-  primary:    #387ef5,
+  // primary:    #387ef5,
+  primary: #00CC33,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #f4f4f4,
+  //light:      #f4f4f4,
+  light: #ED68ED,
   dark:       #222,
-  favorite:   #69BB7B
+  favorite:   #69BB7B,
 );
+
+//$item-md-divider-color: #ff0000;
+$item-md-divider-background: #A530A5;
+//$item-md-note-color: #f00;
+//$list-md-activated-background-color: #f00;
+//$list-text-color: #f00;
+$toggle-md-track-background-color-off: #8D188D;
+$toolbar-md-title-text-color: #000;
+$toolbar-background: #8D188D;
+$list-md-border-color: #AD38AD;
+$list-md-background-color: #AD38AD;
+$toggle-md-handle-background-color-off: darken($toggle-md-track-background-color-off, 11%);
