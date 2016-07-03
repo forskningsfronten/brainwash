@@ -39,10 +39,10 @@ describe('IatResultPage', () => {
     testBlock[3] = makeTestBlock(_.map(new Array<number>(40), (_, i) => i + 800));
     testBlock[5] = makeTestBlock(_.map(new Array<number>(20), (_, i) => i + 1000));
     testBlock[6] = makeTestBlock(_.map(new Array<number>(40), (_, i) => i + 1200));
+    // Test data should give score: 1.979
   });
 
-  it('computes a score', () => {
-    // Right value?
+  it('computes a correct score', () => {
     resultPage = new IatResultPage(mockNav, (<any>{data: {result: testBlock}}));
     expect(resultPage.score).toBeCloseTo(1.979, 2);
   });
@@ -87,7 +87,6 @@ describe('IatResultPage', () => {
   });
 
   it('detects numeric problem with low stddev', () => {
-    console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
     _.forEach(testBlock[2].stimuli, s => s.time = 500); // Zero stddev
     _.forEach(testBlock[5].stimuli, s => s.time = 500); // Zero stddev
     resultPage = new IatResultPage(mockNav, (<any>{data: {result: testBlock}}));

@@ -3,5 +3,16 @@
 </ion-navbar>
 
 <ion-content padding class="iat-result">
-  bla bla bla
+  <div *ngIf="outlierError">
+    <p>Outlier Error</p>
+  </div>
+  <div *ngIf="tooManyErrors">
+    <p>Too many errors</p>
+  </div>
+  <div *ngIf="numericError">
+    <p>Numeric error</p>
+  </div>
+  <div *ngIf="!(outlierError || tooManyErrors || numericError)">
+    <p>IAT Score: {{score}}</p>
+  </div>
 </ion-content>
