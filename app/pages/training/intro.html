@@ -1,37 +1,52 @@
-<ion-navbar *navbar>
-  <ion-title>Training Prep</ion-title>
-</ion-navbar>
-
 <ion-content class="training-intro">
 
   <ion-slides #introSlider pager>
     <ion-slide>
-      <ion-toolbar style="position:fixed; top:0px;">
-        <ion-buttons end>
-          <button (click)="skipIntro()">Skip <ion-icon name="arrow-forward"></ion-icon></button>
-        </ion-buttons>
-      </ion-toolbar>
-      <h2 class="slide-title">Training...</h2>
-      <p>Bla bla, this is how it works.</p>
+      <ion-row class="skip-row">
+        <ion-col>
+          <button clear (click)="skipIntro()">Skip intro<ion-icon name="arrow-forward"></ion-icon></button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="intro-content">
+        <ion-col>
+          <h2>Training...</h2>
+          <p>Bla bla, this is how it works.</p>
+          <button (click)="slider.slideNext()">Next</button>
+        </ion-col>
+      </ion-row>
     </ion-slide>
 
     <ion-slide>
-      <ion-toolbar style="position:fixed; top:0px;">
-        <ion-buttons end>
-          <button (click)="skipIntro()">Skip <ion-icon name="arrow-forward"></ion-icon></button>
-        </ion-buttons>
-      </ion-toolbar>
-      <h2 class="slide-title">Training 2...</h2>
-      <p>Bla bla, some more.</p>
-
+      <ion-row class="skip-row">
+        <ion-col>
+          <button clear (click)="skipIntro()">Skip intro<ion-icon name="arrow-forward"></ion-icon></button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="intro-content">
+        <ion-col>
+          <h2>Some more...</h2>
+          <p>further info.</p>
+          <button (click)="slider.slideNext()">Next</button>
+        </ion-col>
+      </ion-row>
     </ion-slide>
-      <ion-slide>
-        <ion-toolbar style="position:fixed; top:0px;">
-          <ion-label>Skip intro</ion-label><ion-checkbox [(ngModel)]="skipIntroChecked" (ionChange)="skipIntroSettingToggle()"></ion-checkbox>
-        </ion-toolbar>
-        <h2>Ready?</h2>
-        <button primary (click)="startTraining()">Start Training</button>
-      </ion-slide>
-    </ion-slides>
 
+    <ion-slide>
+      <ion-row class="intro-content">
+        <ion-col>
+          <h2>Ready?</h2>
+          <button primary (click)="startTraining()">Start Training</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>
+            Skip intro next time
+            <ion-checkbox [(ngModel)]="skipIntroChecked" (ionChange)="skipIntroSettingToggle()"></ion-checkbox>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+
+  </ion-slides>
 </ion-content>

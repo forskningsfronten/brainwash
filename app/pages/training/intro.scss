@@ -1,11 +1,25 @@
 .training-intro {
+    ion-slide {
+
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex-direction: column;
+      //align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+    }
 
     scroll-content {
       overflow-y: hidden;
     }
 
-    .toolbar-background {
-      background: #fff;
-      border-color: transparent;
+
+    .skip-row {
+      position: fixed;
+      top: 0px;
+      text-align: right;
     }
+
+
 }
