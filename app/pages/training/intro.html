@@ -4,16 +4,21 @@
     <ion-slide>
       <ion-row class="skip-row">
         <ion-col>
-          <button clear (click)="skipIntro()">Skip intro<ion-icon name="arrow-forward"></ion-icon></button>
+          <button clear (click)="skipIntro()">Skippa<ion-icon name="arrow-forward"></ion-icon></button>
         </ion-col>
       </ion-row>
       <ion-row class="intro-content">
         <ion-col>
-          <h2>Training...</h2>
-          <p>Bla bla, this is how it works.</p>
-          <button (click)="slider.slideNext()">Next</button>
+          <h2>Mental träning</h2>
+          <p>Tryck på bilder som visar kontrastereotypa par av bilder och text, tryck inte på de andra bilderna.</p>
         </ion-col>
       </ion-row>
+      <ion-row class="next-nav">
+        <ion-col>
+          <button (click)="slider.slideNext()">OK</button>
+        </ion-col>
+      </ion-row>
+
     </ion-slide>
 
     <ion-slide>
@@ -26,6 +31,10 @@
         <ion-col>
           <h2>Some more...</h2>
           <p>further info.</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="next-nav">
+        <ion-col>
           <button (click)="slider.slideNext()">Next</button>
         </ion-col>
       </ion-row>
@@ -34,15 +43,20 @@
     <ion-slide>
       <ion-row class="intro-content">
         <ion-col>
-          <h2>Ready?</h2>
-          <button primary (click)="startTraining()">Start Training</button>
+          <h2>Redo?</h2>
+          <p>Tryck på knappen och låt hjärntvättningen börja.</p>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row class="next-nav">
         <ion-col>
-          <ion-label>
-            Skip intro next time
-            <ion-checkbox [(ngModel)]="skipIntroChecked" (ionChange)="skipIntroSettingToggle()"></ion-checkbox>
+          <button primary (click)="startTraining()">Starta hjärntvätten</button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="never-again-checkbox">
+        <ion-col>
+          <ion-label dark>
+            Hoppa över hjälpen nästa gång:
+            <ion-checkbox style="left:10px; top: 2px " [(ngModel)]="skipIntroChecked" (ionChange)="skipIntroSettingToggle()"></ion-checkbox>
           </ion-label>
         </ion-col>
       </ion-row>
