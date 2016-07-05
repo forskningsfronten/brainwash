@@ -1,4 +1,4 @@
-File: 14488469810_02b7828ff6_o.jpg 
+File: 14488469810_02b7828ff6_o.jpg
 License: CC BY-NC 2.0
 Source: "Woman" https://www.flickr.com/photos/94186910@N03/14488469810/
 Author: "Vasile Hurghis" <https://www.flickr.com/photos/94186910@N03/>
@@ -92,4 +92,82 @@ File: 10050800605_645f91403a_o.jpg
 License: CC BY-NC-SA 2.0
 Source: "Woman" <https://www.flickr.com/photos/terriem/10050800605/in/photostream/>
 Author: "Terrie Schweitzer" <https://www.flickr.com/photos/terriem/>
+Modification: Original cropped, scaled
+
+File: 25392591373_8868f65140_o.jpg
+License: CC BY 2.0
+Source: "wocintech (microsoft) - 184" <https://www.flickr.com/photos/wocintechchat/25392591373/in/photostream/>
+Author: "#WOCinTech Chat" <https://www.flickr.com/photos/wocintechchat/>
+Modification: Original cropped, scaled
+
+File: 25720877500_a2dd9d1ff0_o.jpg
+License: CC BY 2.0
+Source: "wocintech (microsoft) - 65" <https://www.flickr.com/photos/wocintechchat/25720877500/>
+Author: "#WOCinTech Chat" <https://www.flickr.com/photos/wocintechchat/>
+Modification: Original cropped, scaled
+
+File: 25388788904_e75b07a890_o.jpg
+License: CC BY 2.0
+Source: "wocintech (microsoft) - 96" <https://www.flickr.com/photos/wocintechchat/25388788904/>
+Author: "#WOCinTech Chat" <https://www.flickr.com/photos/wocintechchat/>
+Modification: Original cropped, scaled
+
+File: 25900757772_438b6e4663_o.jpg
+License: CC BY 2.0
+Source: "wocintech (microsoft) - 103" <https://www.flickr.com/photos/wocintechchat/25900757772/>
+Author: "#WOCinTech Chat" <https://www.flickr.com/photos/wocintechchat/>
+Modification: Original cropped, scaled
+
+File: 25388972674_215e39fc55_o.jpg
+License: CC BY 2.0
+Source: "wocintech (microsoft) - 214" <https://www.flickr.com/photos/wocintechchat/25388972674/>
+Author: "#WOCinTech Chat" <https://www.flickr.com/photos/wocintechchat/>
+Modification: Original cropped, scaled
+
+File: 25392637613_ba27454c75_o.jpg
+License: CC BY 2.0
+Source: "wocintech (microsoft) - 216" <https://www.flickr.com/photos/wocintechchat/25392637613/>
+Author: "#WOCinTech Chat" <https://www.flickr.com/photos/wocintechchat/>
+Modification: Original cropped, scaled
+
+File: 25720973070_8a35f34653_o.jpg
+License: CC BY 2.0
+Source: "wocintech (microsoft) - 126" <https://www.flickr.com/photos/wocintechchat/25720973070/in/photostream/>
+Author: "#WOCinTech Chat" <https://www.flickr.com/photos/wocintechchat/>
+Modification: Original cropped, scaled
+
+File: 25900819672_9679758318_o.jpg
+License: CC BY 2.0
+Source: "wocintech (microsoft) - 133" <https://www.flickr.com/photos/wocintechchat/25900819672/>
+Author: "#WOCinTech Chat" <https://www.flickr.com/photos/wocintechchat/>
+Modification: Original cropped, scaled
+
+File: 25497478040_570d4d3fd5_o.jpg
+License: CC BY 2.0
+Source: "wocintech stock - 39" <https://www.flickr.com/photos/wocintechchat/25497478040/>
+Author: "#WOCinTech Chat" <https://www.flickr.com/photos/wocintechchat/>
+Modification: Original cropped, scaled
+
+File: 25497478040_570d4d3fd5_o.jpg
+License: CC BY 2.0
+Source: "wocintech stock - 109" <https://www.flickr.com/photos/wocintechchat/25171589413/>
+Author: "#WOCinTech Chat" <https://www.flickr.com/photos/wocintechchat/>
+Modification: Original cropped, scaled
+
+File: 21911141783_da1461550b_o.jpg
+License: CC BY 2.0
+Source: "Women In Tech - 19" <https://www.flickr.com/photos/wocintechchat/21911141783/>
+Author: "#WOCinTech Chat" <https://www.flickr.com/photos/wocintechchat/>
+Modification: Original cropped, scaled
+
+File: 443738371_15dbc126ed_o.jpg
+License: CC BY 2.0
+Source: "A very beautiful old lady II" <https://www.flickr.com/photos/pedrosimoes7/443738371/>
+Author: "Pedro Ribeiro Simões" <https://www.flickr.com/photos/pedrosimoes7/>
+Modification: Original cropped, scaled
+
+File: 13804043953_180f118146_o.jpg
+License: CC BY 2.0
+Source: "The Boss :)" <https://www.flickr.com/photos/50826080@N00/13804043953/>
+Author: "Stephen Bowler" <https://www.flickr.com/photos/50826080@N00/>
 Modification: Original cropped, scaled

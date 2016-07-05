@@ -43,8 +43,40 @@ export class TrainingPage {
     createTestData() {
       let sciWords = ["Science", "Chemistry", "Math", "Geometry", "Engineering"];
       let artWords = ["Dance", "Theater", "Drama", "History", "Music"];
-      let maleFaces = ['img/2666384408_1.jpg', 'img/2652699508_1.jpg', 'img/10697993_1.jpg', 'img/20315024_1.jpg', 'img/100040721_2.jpg'];
+      let maleFaces = [
+        'img/men/870101527_e6a1c571a1_o.jpg',
+        'img/men/1799448232_deb1a9ba1d_o.jpg',
+        'img/men/2580490890_8ebb4ae3e6_o.jpg',
+        'img/men/2826993413_d68ec02c24_o.jpg',
+        'img/men/3587074856_96d0e30cbd_o.jpg',
+        'img/men/4445416757_dd697bb4b8_o.jpg',
+        'img/men/5498091490_631c9f3a6b_o.jpg',
+        'img/men/5914785828_4aedba37af_o.jpg',
+        'img/men/5952683368_1734ff15ba_o.jpg',
+        'img/men/6616957445_747408332a_o.jpg',
+        'img/men/6848801076_bf8202342c_o.jpg',
+        'img/men/9966523734_3e40dd53bd_o.jpg',
+        'img/men/9966565236_0fa5a52928_o.jpg',
+        'img/men/9966620903_cb46a2070c_o.jpg',
+        'img/men/10068382145_3be2142550_o.jpg',
+        'img/men/11341459815_c0dba9edd3_o.jpg',
+        'img/men/14862101004_c0475fcb05_o.jpg',
+        'img/men/15017791135_4bfdca2805_o.jpg',
+      ];
       let femaleFaces = [
+        'img/woman/443738371_15dbc126ed_o.jpg',
+        'img/woman/13804043953_180f118146_o.jpg',
+        'img/woman/21911141783_da1461550b_o.jpg',
+        'img/woman/25171589413_0f43a33caa_o.jpg',
+        'img/woman/25388788904_e75b07a890_o.jpg',
+        'img/woman/25388972674_215e39fc55_o.jpg',
+        'img/woman/25392591373_8868f65140_o.jpg',
+        'img/woman/25392637613_ba27454c75_o.jpg',
+        'img/woman/25497478040_570d4d3fd5_o.jpg',
+        'img/woman/25720877500_a2dd9d1ff0_o.jpg',
+        'img/woman/25720973070_8a35f34653_o .jpg',
+        'img/woman/25900757772_438b6e4663_o.jpg',
+        'img/woman/25900819672_9679758318_o.jpg',
         'img/woman/10050800605_645f91403a_o.jpg',
         'img/woman/10067707055_5ab38c752c_o.jpg',
         'img/woman/13069588075_3812ca1dfb_o.jpg',
