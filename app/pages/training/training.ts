@@ -7,6 +7,7 @@ import {TrainingResultPage} from '../training/result';
 import {SettingsStorage} from '../settings/settings-storage';
 import {CancelablePromise, timeOutPromise} from '../core/promise-ext';
 import {NavBackAlert} from '../core/ionic-nav-ext';
+import {RandIdx} from '../core/rand-idx';
 import * as _ from 'lodash';
 
 export interface TrainingExample {
@@ -35,10 +36,6 @@ export class TrainingPage {
     playSound: boolean;
     correctResponse: boolean;
     timeout;
-
-    randIdx(length:number) {
-      return Math.floor(Math.random() * length);
-    }
 
     createTestData() {
       let sciWords = ["Science", "Chemistry", "Math", "Geometry", "Engineering"];
@@ -118,28 +115,30 @@ export class TrainingPage {
 
       let n = 36;
 
+      let rand = new RandIdx();
+
       let testSet = Array(n/2).fill(0).map((_, idx) => (
         {
-          word: sciWords[this.randIdx(sciWords.length)],
-          image: femaleFaces[this.randIdx(femaleFaces.length)],
+          word: sciWords[rand.getNum(sciWords.length)],
+          image: femaleFaces[rand.getNum(femaleFaces.length)],
           counterStereotype: true
         }
       )).concat(new Array(n/6).fill(0).map((_, idx) => {
         return {
-          word: artWords[this.randIdx(artWords.length)],
-          image: femaleFaces[this.randIdx(femaleFaces.length)],
+          word: artWords[rand.getNum(artWords.length)],
+          image: femaleFaces[rand.getNum(femaleFaces.length)],
           counterStereotype: false
         };
       })).concat(new Array(n/6).fill(0).map((_, idx) => {
         return {
-          word: sciWords[this.randIdx(sciWords.length)],
-          image: maleFaces[this.randIdx(maleFaces.length)],
+          word: sciWords[rand.getNum(sciWords.length)],
+          image: maleFaces[rand.getNum(maleFaces.length)],
           counterStereotype: false
         };
       })).concat(new Array(n/6).fill(0).map((_, idx) => {
         return {
-          word: artWords[this.randIdx(artWords.length)],
-          image: maleFaces[this.randIdx(maleFaces.length)],
+          word: artWords[rand.getNum(artWords.length)],
+          image: maleFaces[rand.getNum(maleFaces.length)],
           counterStereotype: false
         };
       }));

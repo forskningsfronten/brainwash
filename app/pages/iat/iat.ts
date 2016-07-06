@@ -5,6 +5,7 @@ import {NavController, NavParams, ViewController, Animation, Alert} from 'ionic-
 import {StartPage} from '../start-page/start-page';
 import {NavBackAlert} from '../core/ionic-nav-ext';
 import {IatResultPage} from './result';
+import {RandIdx} from '../core/rand-idx';
 import * as _ from 'lodash';
 
 export interface TestBlock {
@@ -51,9 +52,11 @@ export class IatPage {
   currentBlock = -1;
 
   private getStimuli(n:number, values:string[], concept: string) {
+    let rand = new RandIdx();
+
     // TODO: Prevent same value from showing up twice in a row
     return Array(n).fill(0).map(_ => ({
-        word: values[Math.floor(Math.random() * values.length)],
+        word: values[rand.getNum(values.length)],
         ofConcept: concept,
         time: null,
         error: false,
