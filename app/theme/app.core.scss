@@ -17,3 +17,17 @@
 @import "../pages/iat/result";
 
 @import "../pages/settings/settings";
+
+
+@font-face {
+  font-family: 'Passion One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Passion One'), local('PassionOne-Regular'), url('../../fonts/PassionOne-Regular.tff') format('truetype');
+}
+@font-face {
+  font-family: 'Passion One';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Passion One Bold'), local('PassionOne-Bold'), url('../../fonts/PassionOne-Regular.tff') format('truetype');
+}
