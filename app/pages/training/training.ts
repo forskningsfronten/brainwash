@@ -92,8 +92,27 @@ export class TrainingPage {
         'img/woman/2977240917_a34b938c40_o.jpg',
         'img/woman/5238565943_335b63a582_o.jpg',
         'img/woman/5594811655_a6d4d49b56_o.jpg',
-        'img/woman/7818379162_7a770cfe29_o.jpg'];
-
+        'img/woman/7818379162_7a770cfe29_o.jpg',
+        'img/woman/12468283154_00a9a54bbd_o.jpg',
+        'img/woman/2930973727_532076d47e_o.jpg',
+        'img/woman/6975202706_5a0940c1e4_o.jpg',
+        'img/woman/12562412933_316a91e0e0_o.jpg',
+        'img/woman/3186578380_3ab7462879_o.jpg',
+        'img/woman/7272965350_8a7372031a_o.jpg',
+        'img/woman/12562704154_2706990b95_o.jpg',
+        'img/woman/4055596184_3c6da90142_o.jpg',
+        'img/woman/73211534_92e5dcc863_o.jpg',
+        'img/woman/1442771251_ac5d6cbd0b_o.jpg',
+        'img/woman/4174606808_81cc563084_o.jpg',
+        'img/woman/7669708772_5b5bdd2eda_o_1.jpg',
+        'img/woman/16087628365_3e9b7e0f10_o.jpg',
+        'img/woman/4699751323_6eb09ded2b_o.jpg',
+        'img/woman/7669708772_5b5bdd2eda_o_2.jpg',
+        'img/woman/19714953815_418f88da6a_o.jpg',
+        'img/woman/4993282018_42c8437a26_o.jpg',
+        'img/woman/8722314922_e0a678beb7_o.jpg',
+        'img/woman/27758875280_d21e292239_o.jpg',
+        'img/woman/6670338109_4239325ba0_o.jpg'];
 
       let n = 36;
 
