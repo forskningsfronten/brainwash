@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, ViewController, Slides } from 'ionic-angular';
 import {TrainingPage} from '../training/training';
 import {SettingsStorage} from '../settings/settings-storage';
-
+import { IntroSlide } from '../../components/intro-slide/intro-slide';
 /*
   Generated class for the TrainingIntroPage page.
 
@@ -11,6 +11,7 @@ import {SettingsStorage} from '../settings/settings-storage';
 */
 @Component({
   templateUrl: 'build/pages/training/intro.html',
+  directives: [IntroSlide]
 })
 export class TrainingIntroPage {
   @ViewChild('introSlider') slider: Slides;

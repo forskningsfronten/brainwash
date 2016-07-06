@@ -6,6 +6,9 @@
 
   scroll-content {
     overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   $correct-color: #69BB7B;

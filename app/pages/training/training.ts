@@ -74,7 +74,7 @@ export class TrainingPage {
         'img/woman/25392637613_ba27454c75_o.jpg',
         'img/woman/25497478040_570d4d3fd5_o.jpg',
         'img/woman/25720877500_a2dd9d1ff0_o.jpg',
-        'img/woman/25720973070_8a35f34653_o .jpg',
+        'img/woman/25720973070_8a35f34653_o.jpg',
         'img/woman/25900757772_438b6e4663_o.jpg',
         'img/woman/25900819672_9679758318_o.jpg',
         'img/woman/10050800605_645f91403a_o.jpg',
@@ -95,7 +95,7 @@ export class TrainingPage {
         'img/woman/7818379162_7a770cfe29_o.jpg'];
 
 
-      let n = 6;//36;
+      let n = 36;
 
       let testSet = Array(n/2).fill(0).map((_, idx) => (
         {
