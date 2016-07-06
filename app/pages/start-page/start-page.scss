@@ -8,5 +8,9 @@
 
   scroll-content {
     overflow-y: auto;
+    background-image: url("../../img/whirl.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
   }
 }
