@@ -106,20 +106,14 @@ Source: "Jonas L�fgren" <https://www.flickr.com/photos/tocaboca/9966565236/in/
 Author: "Toca Boca" <https://www.flickr.com/photos/tocaboca/>
 Modification: Original cropped, scaled
 
-Source: "" <>
-Author: "" <>
+File: 14072643377_25cd7a8a4a_o.jpg
+License: CC BY 2.0
+Source: "" <https://www.flickr.com/photos/zainx/14072643377/>
+Author: "mr.5/4™" <https://www.flickr.com/photos/zainx/>
+Modification: Original cropped, scaled
 
-Source: "" <>
-Author: "" <>
-
-Source: "" <>
-Author: "" <>
-
-Source: "" <>
-Author: "" <>
-
-Source: "" <>
-Author: "" <>
-
-Source: "" <>
-Author: "" <>
+File: 7669708772_5b5bdd2eda_o_2.jpg
+License: CC BY-SA 2.0
+Source: "On the set of First Day" <https://www.flickr.com/photos/macabrephotographer/7669708772/>
+Author: "Jorge Gonzalez" <https://www.flickr.com/photos/macabrephotographer/>
+Modification: Original cropped, scaled

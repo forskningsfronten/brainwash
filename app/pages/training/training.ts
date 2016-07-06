@@ -62,6 +62,8 @@ export class TrainingPage {
         'img/men/11341459815_c0dba9edd3_o.jpg',
         'img/men/14862101004_c0475fcb05_o.jpg',
         'img/men/15017791135_4bfdca2805_o.jpg',
+        'img/men/14072643377_25cd7a8a4a_o.jpg',
+        'img/men/7669708772_5b5bdd2eda_o_2.jpg'
       ];
       let femaleFaces = [
         'img/woman/443738371_15dbc126ed_o.jpg',
