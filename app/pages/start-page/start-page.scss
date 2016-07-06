@@ -1,16 +1,23 @@
 .getting-started {
 
-  p {
-    margin: 20px 0;
-    line-height: 22px;
-    font-size: 16px;
-  }
-
   scroll-content {
     overflow-y: auto;
+
     background-image: url("../../img/whirl.gif");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  img {
+    padding-top: 10%;
+  }
+
+  button {
+    margin-top: 12px;
   }
 }
