@@ -2,16 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, ViewController, Slides } from 'ionic-angular';
 import {TrainingPage} from '../training/training';
 import {SettingsStorage} from '../settings/settings-storage';
-import { IntroSlide } from '../../components/intro-slide/intro-slide';
-/*
-  Generated class for the TrainingIntroPage page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'build/pages/training/intro.html',
-  directives: [IntroSlide]
 })
 export class TrainingIntroPage {
   @ViewChild('introSlider') slider: Slides;
