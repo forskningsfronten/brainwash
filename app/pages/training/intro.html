@@ -4,7 +4,7 @@
     <ion-slide>
       <ion-row class="skip-row">
         <ion-col>
-          <button clear (click)="skipIntro()">Skippa<ion-icon name="arrow-forward"></ion-icon></button>
+          <button class="skip-button" (click)="skipIntro()">Skippa<ion-icon name="arrow-forward"></ion-icon></button>
         </ion-col>
       </ion-row>
       <ion-row class="intro-content">
@@ -15,7 +15,7 @@
       </ion-row>
       <ion-row class="next-nav">
         <ion-col>
-          <button (click)="slider.slideNext()">OK</button>
+          <button class="bw-button primary-button" (click)="slider.slideNext()">OK!</button>
         </ion-col>
       </ion-row>
 
@@ -24,7 +24,7 @@
     <ion-slide>
       <ion-row class="skip-row">
         <ion-col>
-          <button clear (click)="skipIntro()">Skip intro<ion-icon name="arrow-forward"></ion-icon></button>
+          <button class="skip-button" (click)="skipIntro()">Skip intro<ion-icon name="arrow-forward"></ion-icon></button>
         </ion-col>
       </ion-row>
       <ion-row class="intro-content">
@@ -35,7 +35,7 @@
       </ion-row>
       <ion-row class="next-nav">
         <ion-col>
-          <button (click)="slider.slideNext()">Next</button>
+          <button class="bw-button primary-button" (click)="slider.slideNext()">Next</button>
         </ion-col>
       </ion-row>
     </ion-slide>
@@ -49,7 +49,7 @@
       </ion-row>
       <ion-row class="next-nav">
         <ion-col>
-          <button primary (click)="startTraining()">Starta hjärntvätten</button>
+          <button class="bw-button primary-button" (click)="startTraining()">Starta hjärntvätten</button>
         </ion-col>
       </ion-row>
       <ion-row class="never-again-checkbox">

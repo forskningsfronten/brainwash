@@ -35,6 +35,7 @@
 button {
   font-family: 'Passion One';
   letter-spacing: 0.1rem;
+
 }
 
 scroll-content {
@@ -46,4 +47,13 @@ ion-navbar {
   font-family: 'Passion One';
   letter-spacing: 0.1rem;
   font-weight: 400;
+}
+
+.primary-button {
+  background-color: #6fe800;
+}
+
+.secondary-button {
+  background-color: #be38ad;
+  color: #330633;
 }
