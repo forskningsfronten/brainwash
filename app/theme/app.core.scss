@@ -34,10 +34,16 @@
 
 button {
   font-family: 'Passion One';
-  font-weight: 400;
   letter-spacing: 0.1rem;
 }
 
 scroll-content {
   overflow-y: auto;
+}
+
+ion-navbar {
+  background-color: #0f0;
+  font-family: 'Passion One';
+  letter-spacing: 0.1rem;
+  font-weight: 400;
 }
