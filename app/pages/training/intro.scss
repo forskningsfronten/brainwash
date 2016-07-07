@@ -1,14 +1,13 @@
 .training-intro {
 
-
-    ion-slide {
-      background-color: #ed68ed;
-
+    scroll-content {
       background-image: url("../../img/zigzag.png");
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
+    }
 
+    ion-slide {
       display: -webkit-box;
       display: -moz-box;
       display: -ms-flexbox;
@@ -18,11 +17,11 @@
     }
 
     .bw-button {
-        color: #000;
-        border-color: #000;
-        border-width: 2px;
-        border-style: solid;
-        border-radius: 6px;
+      color: #000;
+      border-color: #000;
+      border-width: 2px;
+      border-style: solid;
+      border-radius: 6px;
     }
 
     h2 {

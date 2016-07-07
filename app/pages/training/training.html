@@ -4,10 +4,12 @@
   </audio>
 
   <ion-card [ngClass]="{'tap-result-correct' : showResult && correctResponse, 'tap-result-wrong' : showResult && !correctResponse}" (click)="tap()" *ngIf="showCard">
-    <img padding style="padding-bottom: 0px;" src="{{current.image}}"/>
-    <ion-card-content >
+    <div class="img-padding">
+      <img src="{{current.image}}"/>
+    </div>
+    <ion-card-content>
       <ion-card-title>
-        {{current.word}}
+        {{current.word.toUpperCase()}}
       </ion-card-title>
     </ion-card-content>
   </ion-card>

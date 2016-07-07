@@ -1,17 +1,50 @@
 .training-page {
 
+  scroll-content {
+    background-image: url("../../img/zigzag.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
   ion-card {
     text-align: center;
+    background-color: #dbf7e5;
+
+    border-color: #000;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 8px
   }
 
   scroll-content {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #ee42d1;
   }
 
-  $correct-color: #69BB7B;
-  $wrong-color:   #f53d3d;
+  ion-card-title {
+    font-family: 'Passion One';
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+    font-size: 4.0rem;
+    padding: 0px;
+  }
+
+  .img-padding {
+    padding: 10px 10px 0px 10px;
+  }
+
+  img {
+    border-color: #000;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+  }
+
+  $correct-color: #6fe800;
+  $wrong-color:   #ff052b;
 
   .tap-result-correct {
     background-color: $correct-color;
@@ -30,28 +63,5 @@
       display: flex;
       align-items: center;
       width: auto;
-  }
-
-  @keyframes shake {
-    0% {transform: translateX(0);}
-    12.5% {transform: translateX(-6px) rotateY(-5deg)}
-    37.5% {transform: translateX(5px) rotateY(4deg)}
-    62.5% {transform: translateX(-3px) rotateY(-2deg)}
-    87.5% {transform: translateX(2px) rotateY(1deg)}
-    100% {transform: translateX(0)}
-  }
-
-  @-webkit-keyframes shake {
-    0% {-webkit-transform: translateX(0);}
-    12.5% {-webkit-transform: translateX(-6px) rotateY(-5deg)}
-    37.5% {-webkit-transform: translateX(5px) rotateY(4deg)}
-    62.5% {-webkit-transform: translateX(-3px) rotateY(-2deg)}
-    87.5% {-webkit-transform: translateX(2px) rotateY(1deg)}
-    100% {-webkit-transform: translateX(0)}
-  }
-
-  .shake {
-    -webkit-animation: shake 400ms ease-in-out;
-    animation: shake 400ms ease-in-out;
   }
 }
