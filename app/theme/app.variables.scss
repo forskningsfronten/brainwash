@@ -37,16 +37,20 @@ $colors: (
 );
 
 //$item-md-divider-color: #ff0000;
-$item-md-divider-background: #A530A5;
+//$item-md-divider-background: #A530A5;
 //$item-md-note-color: #f00;
 //$list-md-activated-background-color: #f00;
 //$list-text-color: #f00;
-$toggle-md-track-background-color-off: #8D188D;
 $toolbar-md-title-text-color: #000;
-$toolbar-background: #8D188D;
-$list-md-border-color: #AD38AD;
-$list-md-background-color: #AD38AD;
-$toggle-md-handle-background-color-off: darken($toggle-md-track-background-color-off, 11%);
+$toolbar-background: #be38ad;
+$list-md-border-color: #ed67ed;
+//$list-md-background-color: #AD38AD;
+$toggle-md-track-background-color-off: #be38ad;
+$toggle-md-handle-background-color-off: darken($toggle-md-track-background-color-off, 12%);
+
+$toggle-md-track-background-color-on: #6fe800;
+$toggle-md-handle-background-color-on: darken($toggle-md-track-background-color-on, 7%);
+
 
 $toolbar-md-title-font-size: 2.6rem;
 $button-md-font-size:	2.0rem;
