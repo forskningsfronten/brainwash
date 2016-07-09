@@ -46,7 +46,7 @@
     "tslint": "^3.12.1"
   },
   "name": "brainwash",
-  "description": "brainwash: An Ionic project",
+  "description": "A fun stereotype and prejudice reduction tool",
   "cordovaPlugins": [
     "cordova-plugin-device",
     "cordova-plugin-console",
