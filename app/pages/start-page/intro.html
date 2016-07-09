@@ -1,0 +1,71 @@
+<ion-content class="start-intro">
+
+  <ion-slides #introSlider pager>
+    <ion-slide>
+      <ion-row class="skip-row">
+        <ion-col>
+          <button class="skip-button" (click)="skipIntro()">Skippa intro<ion-icon name="arrow-forward"></ion-icon></button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="intro-content">
+        <ion-col>
+          <h2>Fördomar är skit!</h2>
+          <p>De flesta av oss eftersträvar jämlikhet och tolerans i våra tankar och hand&shy;lingar, men det är inte alltid så lätt...</p>
+          <p>Fördomar och stereotyper påverkar oss ständigt. Ofta undermedvetet, utan att vi märker det. Så vad kan vi göra åt saken?</p>
+          <p>Under de senaste åren har forskare kommit på olika sätt att mäta och försvaga stereotyper. Vi har tagit deras resultat och stoppat in dem i den här appen. Genom regelbunden träning med telefonen kan du nu minska dina egna fördomar. Vist är det toppen!</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="next-nav">
+        <ion-col>
+          <button class="bw-button primary-button" (click)="slider.slideNext()">Nästa</button>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-row class="skip-row">
+        <ion-col>
+          <button class="skip-button" (click)="skipIntro()">Skippa intro<ion-icon name="arrow-forward"></ion-icon></button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="intro-content">
+        <ion-col>
+          <h2>Stereotyp <i style="text-transform: uppercase; font-size: 0.6em;">vs</i> association</h2>
+          <p>För att förstå hur vår frivilliga, fördoms&shy;reducerande hjärntvätt fungerar behöver vi introducera två begrepp:</p>
+          <p>En <i>stereotyp</i> är en uppfattning om att medlemmar i en grupp generellt sett uppvisar vissa kännetecken, t.ex. att kvinnor är omvårdande.</p>
+          <p>En <i>association</i> är en, mer eller mindre stark, koppling mellan två olika begrepp. T.ex. associerar vissa yrket under&shy;sköterska till gruppen kvinnor snarare än till män. En sådan association åter&shy;speglar en stereotyp.</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="next-nav">
+        <ion-col>
+          <button class="bw-button primary-button" (click)="slider.slideNext()">Nästa</button>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-row class="intro-content">
+        <ion-col>
+          <h2>Hjärntvätt FTW!</h2>
+          <p>Appen har en tränings- och en test-avdelning. I träningsdelen (hjärntvätten) gör du en övning som skapar nya associationer mellan en grupp och ett begrepp som vänder upp och ned på en stereotyp som gäller den gruppen.</p>
+          <p>I testavdelningen kan du mäta hur starka dina stereotypa associationer är med ett så kallat IAT (<i>Implicit Associa&shy;tion Test</i>). Förhoppningsvis blir de svagare och svagare ju mer du tränar.</p>
+          <p></p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="never-again-checkbox">
+        <ion-col>
+          <ion-label dark>
+            Starta direkt nästa gång:
+            <ion-checkbox style="left:10px; top: 2px " [(ngModel)]="skipIntroChecked" (ionChange)="skipIntroSettingToggle()"></ion-checkbox>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="next-nav">
+        <ion-col>
+          <button class="bw-button primary-button" (click)="startTraining()">Starta Appen</button>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>
