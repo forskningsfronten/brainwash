@@ -14,9 +14,11 @@ export class StartIntroPage {
 
   constructor(private nav: NavController, private viewCtrl: ViewController) {
     this.settingsStorage
-      .getValue(this.settingsStorage.showTrainingInstructionsKey)
+      .getValue(this.settingsStorage.startInstructionsKey)
       .then(val => {
         this.skipIntroChecked = !(val === 'true');
+        if (this.skipIntroChecked)
+          this.startApp();
       });
   }
 
@@ -25,7 +27,7 @@ export class StartIntroPage {
     this.settingsStorage.setValue(this.settingsStorage.startInstructionsKey, !this.skipIntroChecked)
   }
 
-  startTraining() {
+  startApp() {
     this.nav.push(StartPage)
       .then(() => {
         // Remove this page from the back nav stack
