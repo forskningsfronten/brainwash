@@ -38,8 +38,8 @@ export class TrainingPage {
     timeout;
 
     createTestData() {
-      let sciWords = ["Science", "Chemistry", "Math", "Geometry", "Engineering"];
-      let artWords = ["Dance", "Theater", "Drama", "History", "Music"];
+      let sciWords = ['Biologi', 'Fysik', 'Kemi', 'Matematik', 'Geologi', 'Astronomi', 'Vetenskap'];
+      let artWords = ['Filosofi', 'Estetik', 'Dans', 'Teater', 'Litteratur', 'Musik', 'Historia'];
       let maleFaces = [
         'img/men/870101527_e6a1c571a1_o.jpg',
         'img/men/1799448232_deb1a9ba1d_o.jpg',

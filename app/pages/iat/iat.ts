@@ -75,11 +75,11 @@ export class IatPage {
       },
       concept2A: {
         title: 'Humaniora',
-        words: ['Filosofi', 'Estetik', 'Konstvetenskap', 'Litteraturvetenskap', 'Språkvetenskap', 'Musikvetenskap', 'Historia']
+        words: ['Filosofi', 'Estetik', 'Dans', 'Teater', 'Litteratur', 'Musik', 'Historia']
       },
       concept2B: {
         title: 'Naturvetenskap',
-        words: ['Biologi', 'Fysik', 'Kemi', 'Matematik', 'Geologi', 'Astronomi', 'Ingenjörsvetenskap']
+        words: ['Biologi', 'Fysik', 'Kemi', 'Matematik', 'Geologi', 'Astronomi', 'Vetenskap']
       }
     }
   }
