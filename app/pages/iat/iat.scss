@@ -1,64 +1,102 @@
 .iat-page {
-  
+
+  scroll-content {
+    background-image: url("../../img/zigzag.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .top-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .center-row {
+    justify-content: space-around;
+  }
+
+  .bottom-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   .stimuli-concept {
-    font-weight: bold;
-    font-size: 2.2rem;
+    font-family: 'Passion One';
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+    font-size: 2.8rem;
+    text-transform: uppercase;
   }
 
   .stimuli-concept-separator {
     font-weight: lighter;
     font-style: italic;
-    color: #888;
-  }
-
-  .stimuli-concept-left {
-    position:fixed;
-    left: 8px;
-  }
-
-  .stimuli-concept-right {
-    position:fixed;
-    right: 8px;
+    text-transform: lowercase;
+    color: #dbf7e5;
   }
 
   .stimuli {
-      height: 100%;
-      font-size: 2.8rem;
-      font-weight: bold;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: auto;
-      text-align: center;
+    text-align: center;
+
+    font-family: 'Passion One';
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+    font-size: 4.4rem;
+    text-transform: uppercase;
   }
 
-  .block-instruction {
-      height: 100%;
-      // font-size: 2.8rem;
-      // font-weight: bold;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      align-items: center;
-      // justify-content: center;
-      width: auto;
-      // text-align: center;
+  p {
+    // text-align: justify;
+    // hyphens: auto;
+  }
+
+  h2 {
+    font-family: 'Passion One';
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+    font-size: 2.4rem;
   }
 
   .error {
-    font-size: 2.8rem;
+    font-size: 6.0rem;
     font-weight: bold;
+
     position: fixed;
-    top: 60%;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+    top: 25%;
+    width: 90%;
     text-align: center;
+  }
+
+  .block-instruction {
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+
+  ion-card {
+    background-color: #dbf7e5;
+    border-color: #000;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 8px;
+  }
+
+  button {
+    width: 9rem;
+    height: 9rem;
+
+    color: #000;
+
+    border-style: solid;
+    border-color: #000;
+    border-width: 3px;
+    box-shadow: none;
+    border-radius: 50%;
   }
 }

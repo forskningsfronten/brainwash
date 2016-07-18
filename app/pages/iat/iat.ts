@@ -74,12 +74,12 @@ export class IatPage {
         words: ['Man', 'Kille', 'Far', 'Herre', 'Farfar', 'Fästman', 'Son', 'Farbror']
       },
       concept2A: {
-        title: 'Humaniora',
+        title: 'Kultur',
         words: ['Filosofi', 'Estetik', 'Dans', 'Teater', 'Litteratur', 'Musik', 'Historia']
       },
       concept2B: {
-        title: 'Naturvetenskap',
-        words: ['Biologi', 'Fysik', 'Kemi', 'Matematik', 'Geologi', 'Astronomi', 'Vetenskap']
+        title: 'Vetenskap',
+        words: ['Biologi', 'Fysik', 'Kemi', 'Matematik', 'Geologi', 'Astronomi', 'Datalogi']
       }
     }
   }

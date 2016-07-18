@@ -1,44 +1,56 @@
-<ion-content padding class="i-a-t-page">
+<ion-content padding class="iat-page">
 
-  <div text-left class="stimuli-concept stimuli-concept-left">
-    {{testBlocks[currentBlock].leftConcepts.first}}<br>
-    <div *ngIf="testBlocks[currentBlock].leftConcepts.second">
-      <div class="stimuli-concept-separator">eller</div>
-      {{testBlocks[currentBlock].leftConcepts.second}}
-    </div>
-  </div>
+ <!-- Classification Concepts -->
+ <div class="top-row">
+   <div text-left class="stimuli-concept">
+     {{testBlocks[currentBlock].leftConcepts.first}}<br>
+     <div *ngIf="testBlocks[currentBlock].leftConcepts.second">
+       <div class="stimuli-concept-separator">eller</div>
+       {{testBlocks[currentBlock].leftConcepts.second}}
+     </div>
+   </div>
 
-  <div text-right class="stimuli-concept stimuli-concept-right">
-    {{testBlocks[currentBlock].rightConcepts.first}}<br>
-    <div *ngIf="testBlocks[currentBlock].rightConcepts.second">
-      <div class="stimuli-concept-separator">eller</div>
-      {{testBlocks[currentBlock].rightConcepts.second}}
-    </div>
-  </div>
+   <div text-right class="stimuli-concept">
+     {{testBlocks[currentBlock].rightConcepts.first}}<br>
+     <div *ngIf="testBlocks[currentBlock].rightConcepts.second">
+       <div class="stimuli-concept-separator">eller</div>
+       {{testBlocks[currentBlock].rightConcepts.second}}
+     </div>
+   </div>
+ </div>
 
-  <div *ngIf="currentIndex !== -1" class="stimuli">
-    {{currentStimuli.word}}
-  </div>
+ <!-- Word Stimuli -->
+ <div class="center-row">
+   <div *ngIf="currentIndex !== -1" class="stimuli">
+     {{currentStimuli.word}}
+   </div>
+ </div>
 
-  <div style="margin: -18px" *ngIf="currentIndex === -1" class="block-instruction">
-    <ion-card padding>
-        <h2>Del {{currentBlock + 1}} av {{testBlocks.length}}</h2>
-        <hr>
-        <div [innerHTML]="testBlocks[currentBlock].instruction"></div>
-        <hr>
-        <p>Tryck på någon av pilarna för att starta.</p>
-    </ion-card>
-  </div>
+ <!-- Alt. Instruction card -->
+ <div *ngIf="currentIndex === -1" class="block-instruction">
+   <ion-card padding>
+     <h2>Del {{currentBlock + 1}} av {{testBlocks.length}}</h2>
+     <hr>
+     <div [innerHTML]="testBlocks[currentBlock].instruction"></div>
+     <hr>
+     <p>Tryck på någon av pilarna för att starta.</p>
+   </ion-card>
+ </div>
 
-  <button fab fab-bottom fab-center clear *ngIf='showError'>
-    ERROR
-  </button>
 
-  <button fab fab-left fab-bottom dark outline (click)="leftPress()">
-    <ion-icon name="arrow-round-back"></ion-icon>
-  </button>
-  <button fab fab-right fab-bottom dark outline (click)="rightPress()">
-    <ion-icon name="arrow-round-forward"></ion-icon>
-  </button>
+ <!-- Buttons -->
+ <div class="bottom-row">
+   <button (click)="leftPress()">
+     <ion-icon name="arrow-round-back"></ion-icon>
+   </button>
+   <button (click)="rightPress()">
+     <ion-icon name="arrow-round-forward"></ion-icon>
+   </button>
+ </div>
+
+ <!-- Error Indication (fixed pos) -->
+ <div *ngIf='showError' class="error">
+   <ion-icon name="close"></ion-icon>
+ </div>
 
 </ion-content>
