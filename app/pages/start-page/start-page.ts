@@ -3,6 +3,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {TrainingIntroPage} from '../training/intro';
 import {TrainingPage} from '../training/training';
 import {IatPage} from '../iat/iat';
+import {IatIntroPage} from '../iat/intro';
 import {SettingsPage} from '../settings/settings';
 import {SettingsStorage} from '../settings/settings-storage';
 
@@ -28,7 +29,14 @@ export class StartPage {
   }
 
   startIAT() {
-    this.nav.push(IatPage);
+    this.settingsStorage
+      .getValue(this.settingsStorage.showIATInstructionsKey)
+      .then(val => {
+        if (val === 'false')
+          this.nav.push(IatPage);
+        else
+          this.nav.push(IatIntroPage);
+      });
   }
 
   openSettings() {

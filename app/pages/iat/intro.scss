@@ -1,0 +1,72 @@
+.iat-intro {
+
+    scroll-content {
+      background-image: url("../../img/zigzag.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    ion-slide {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bw-button {
+      color: #000;
+      border-color: #000;
+      border-width: 2px;
+      border-style: solid;
+      border-radius: 6px;
+    }
+
+    h2 {
+      color: #330633;
+      font-family: 'Passion One';
+      letter-spacing: 0.1rem;
+      font-weight: 400;
+      font-size: 3.0rem;
+      text-transform: capitalize;
+    }
+
+    p {
+      padding-left: 10px;
+      padding-right: 10px;
+      font-size: 1.6rem;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    .skip-button {
+      border-color: transparent;
+      color: #8e118e;
+      background-color: transparent;
+      box-shadow: none;
+      opacity: 1;
+    }
+
+    .intro-content {
+      position: absolute;
+      top: 12%
+    }
+
+    .next-nav {
+      position: absolute;
+      bottom: 10%
+    }
+
+    .never-again-checkbox {
+      position: absolute;
+      bottom: 20%
+    }
+
+    .skip-row {
+      position: fixed;
+      top: 0px;
+      text-align: right;
+    }
+}
