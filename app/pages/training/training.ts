@@ -1,12 +1,11 @@
 /// <reference path="../../../typings/modules/lodash/index.d.ts" />
 
 import {Component} from '@angular/core';
-import {NavController, NavParams, ViewController, Animation, Alert} from 'ionic-angular';
+import {NavController, NavParams, ViewController} from 'ionic-angular';
 import {StartPage} from '../start-page/start-page';
 import {TrainingResultPage} from '../training/result';
 import {SettingsStorage} from '../settings/settings-storage';
 import {CancelablePromise, timeOutPromise} from '../core/promise-ext';
-import {NavBackAlert} from '../core/ionic-nav-ext';
 import {RandIdx} from '../core/rand-idx';
 import * as _ from 'lodash';
 
@@ -182,12 +181,7 @@ export class TrainingPage {
 
     private settingsStorage = new SettingsStorage();
 
-    private navBackAlert_: NavBackAlert;
-
     constructor(private nav: NavController, private navParams: NavParams, private viewCtrl: ViewController) {
-        console.log("CTOR");
-        this.navBackAlert_ = new NavBackAlert(nav, 'Training Canceled', 'Now exiting');
-
         this.settingsStorage
           .getValue(this.settingsStorage.playTrainingSoundsKey)
           .then(val => {
@@ -204,8 +198,6 @@ export class TrainingPage {
 
     showBlank() {
         console.log("showing blank");
-        if (this.navBackAlert_.leavingPage)
-          return;
         this.showCard = false;
         timeOutPromise(1000).then(() => {
             console.log("showing blank - on to next");
@@ -236,13 +228,9 @@ export class TrainingPage {
 
     nextExample(startWithBlank = true) {
         console.log("nextExample()");
-        if (this.navBackAlert_.leavingPage)
-          return;
 
         if (this.currentIndex == this.examples.length - 1) {
             // No more examples, training finished
-            this.navBackAlert_ = null;
-
             this.nav.push(TrainingResultPage, {result: this.result})
               .then(() => {
                 // Remove this page to make back go back to root from results page
@@ -298,19 +286,11 @@ export class TrainingPage {
     }
 
     showResultFeedback(correctResponse: boolean) {
-        if (this.navBackAlert_.leavingPage)
-          return;
-
         this.correctResponse = correctResponse;
         this.showResult = true;
         timeOutPromise(500).then(() => {
             this.showResult = false;
             this.nextExample();
         });
-    }
-
-    ionViewWillLeave() {
-      if (this.navBackAlert_)
-        this.navBackAlert_.showAlert();
     }
 }

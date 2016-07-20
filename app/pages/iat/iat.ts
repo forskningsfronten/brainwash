@@ -3,7 +3,6 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams, ViewController, Animation, Alert} from 'ionic-angular';
 import {StartPage} from '../start-page/start-page';
-import {NavBackAlert} from '../core/ionic-nav-ext';
 import {IatResultPage} from './result';
 import {RandIdx} from '../core/rand-idx';
 import * as _ from 'lodash';
@@ -166,10 +165,6 @@ export class IatPage {
   }
 
   constructor(private nav: NavController, private navParams: NavParams, private viewCtrl: ViewController) {
-    console.log("CTOR");
-
-    this.navBackAlert_ = new NavBackAlert(nav, 'Training Canceled', 'Now exiting');
-
     this.createTestData();
     this.currentIndex = -1;
   }
@@ -183,7 +178,6 @@ export class IatPage {
     if (this.currentBlock === (this.testBlocks.length - 1)
       && (this.currentIndex === (this.testBlocks[this.currentBlock].stimuli.length - 1))) {
       // No more examples, iat finished
-      this.navBackAlert_ = null;
       this.nav.push(IatResultPage, {result: this.testBlocks})
         .then(() => {
           // Remove this page to make back go back to root from results page
@@ -243,11 +237,5 @@ export class IatPage {
       this.showError = true;
       this.currentStimuli.error = true;
     }
-  }
-
-  private navBackAlert_: NavBackAlert;
-  ionViewWillLeave() {
-    if (this.navBackAlert_)
-      this.navBackAlert_.showAlert();
   }
 }
