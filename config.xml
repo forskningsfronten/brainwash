@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.brainwash587615" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="org.forskningsfronten.brainwash" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>brainwash</name>
   <description>A fun stereotype and prejudice reduction tool</description>
   <author email="info@forskningsfronten.org" href="https://forskningsfronten.org/">Forskningsfronten</author>
@@ -7,10 +7,6 @@
   <access origin="*"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
-  <allow-intent href="tel:*"/>
-  <allow-intent href="sms:*"/>
-  <allow-intent href="mailto:*"/>
-  <allow-intent href="geo:*"/>
   <platform name="android">
     <allow-intent href="market:*"/>
   </platform>
